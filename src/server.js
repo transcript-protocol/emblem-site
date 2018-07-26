@@ -2,7 +2,7 @@
 // server.js is kind of a misnomer because all of this is the server
 // is called server.js because ti's the top level file
 
-const PORT = 3000
+const PORT = 4000
 const express = require('express')
 const app = express()
 
