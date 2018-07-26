@@ -188,7 +188,7 @@ function scrapeStudent() {
 //gets data from form and makes post requests to localhost
 function submitUser () {
   if (getTermsCheckValue() === true ) {
-    baseUrl = 'http://localhost:3000/' //change this to base url of remote server once it's set up
+    baseUrl = 'http://localhost:4000/' //change this to base url of remote server once it's set up
     var accountType = getAccountTypeRadioValue()
     user = scrapeUser()
     // console.log(user)
