@@ -1,0 +1,22 @@
+{
+  "name": "transcript-server",
+  "version": "1.0.0",
+  "description": "Server for transcript protocol app",
+  "main": "src/server.js",
+  "repository": "git@github.com:transcript-protocol/transcript-server.git",
+  "author": "Will Galebach <willbach@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "node src/server.js",
+    "test": "./scripts/test.sh"
+  },
+  "dependencies": {
+    "assert": "^1.4.1",
+    "bcrypt-nodejs": "^0.0.3",
+    "bluebird": "^3.5.1",
+    "ethereumjs-util": "^5.2.0",
+    "express": "^4.16.3",
+    "mongoose": "^5.2.3",
+    "supertest": "^3.1.0"
+  }
+}
