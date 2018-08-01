@@ -214,26 +214,15 @@ userController.deleteStudent = (req, res) => {
 // CODE FOR STUDENT INFO ENDS HERE //////////////
 /////////////////////////////////////////////////
 
-///////////////////////////////////////////////
-// CODE FOR HASH INFO STARTS HERE ////////////
-/////////////////////////////////////////////
+/////////////////////////////////////////////////////
+// CODE FOR TRANCSRIPT INFO STARTS HERE ////////////
+///////////////////////////////////////////////////
 
-/*
-In this document, 'hash' refers to thw whole hash JS object whereas 'hashValue' refers to the hash itself. 
 
-Example: 
-
-const guidance1 ={
-    hashValue: 'cbe3d16cc9f5cef09648e350a1abfbd4a3fb02b7a7f1cd6c02c23b5ee9857e58',
-    username: 'euler@python.com'
-    studentUsername: 'student@emblemEDU.com'
-}
-*/
-
-userController.getHash = (req, res) => {
-    userService.getHash(req.params.hashValue)
-    .then((hash) => {
-        if (!hash) {
+userController.getTranscript = (req, res) => {
+    userService.getTranscript(req.params.pdfContent)
+    .then((transcript) => {
+        if (!transcript) {
             res.status(404).end('The document you are trying to verify has not been authenticated by a guidance counselor')
         } else {
             res.status(200).end('This document has been authenticated!')
@@ -241,7 +230,7 @@ userController.getHash = (req, res) => {
     })
     .catch( err => { // 'catch' the error that was thrown by an earlier file (service or repository), and tell the browser the error type and message
         console.log(err)
-        if(err === 'hash format is not valid') {
+        if(err === 'transcript format is not valid') {
             res.status(400).end(err) //send error code and error text (which is defined by `throw new Error`). 400 = invalid request
         } else {
             res.status(503).end(err) //send error code and error text. 503 = service not available
@@ -249,10 +238,10 @@ userController.getHash = (req, res) => {
     })
 }
 
-userController.storeHash = (req, res) => {
-    userService.storeHash(req.body).then( (hash) => {
-        console.log('WHAT IS HAPPENDING ', hash.hashValue)
-        res.end('hash stored')
+userController.storeTranscript = (req, res) => {
+    userService.storeTranscript(req.body).then( (transcript) => {
+        console.log('WHAT IS HAPPENDING ', transcript.pdfContent)
+        res.end('transcript stored')
     })
     .catch( (err) => {
         console.log('ERROR: ', err)
@@ -260,12 +249,12 @@ userController.storeHash = (req, res) => {
     })
 }
 
-userController.updateHash = (req, res) => {
-    userService.updateHash(req.body).then( (hash)  => {
-        res.end(hash.hashValue)
+userController.updateTranscript = (req, res) => {
+    userService.updateTranscript(req.body).then( (transcript)  => {
+        res.end(transcript.pdfContent)
     })
-    .then((hash) => {
-        if (!hash){
+    .then((transcript) => {
+        if (!transcript){
             res.status(404).end('User does not exist')
         }else{
             res.status(200).end('User sucessfully updated')
@@ -277,8 +266,8 @@ userController.updateHash = (req, res) => {
     })
 }
 
-userController.deleteHash = (req, res) => {
-    userService.deleteHash(req.params.hashValue).then((data) => {
+userController.deleteTranscript = (req, res) => {
+    userService.deleteTranscript(req.params.pdfContent).then((data) => {
             res.status(204).end()
         })
         .catch((err) => {
@@ -287,10 +276,17 @@ userController.deleteHash = (req, res) => {
         })
 }
 
+// userController.getTranscriptByUsername = (req, res) => {
+//     userService.getTranscriptByUsername(req.body)
+//     .then( (transcript) => {
+//         res.end(transcript.hashValue)
+//     })
+// }
 
-///////////////////////////////////////////////
-// CODE FOR HASH INFO ENDS HERE //////////////
-/////////////////////////////////////////////
+
+/////////////////////////////////////////////////////
+// CODE FOR TRANSCRIPT INFO ENDS HERE //////////////
+///////////////////////////////////////////////////
 
 
 module.exports = userController

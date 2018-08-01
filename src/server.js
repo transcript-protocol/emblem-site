@@ -43,11 +43,12 @@ app.post('/student/:username', userController.storeStudent) // sets student data
 app.put('/student/:username', userController.updateStudent) //updates student data (name, DOB, school name) by username
 app.delete('/student/:username', userController.deleteStudent) //deletes student data (name, DOB, school name) by username
 
-//hash
-app.get('/hash/:hashValue', userController.getHash) //gets hash data (hashValue, username, studentUsername) from hashValue
-app.post('/hash', userController.storeHash) // sets hash data (hashValue, username, studentUsername, date&time updated)
-app.put('/hash', userController.updateHash) //updates hash data (hashValue, username, studentUsername) by hashValue
-app.delete('/hash/:hashValue', userController.deleteHash) //deletes hash data (hashValue, username, studentUsername) by hashValue
+//transcript
+app.get('/transcript/:pdfContent', userController.getTranscript) //gets transcript data (pdfContent, username, studentUsername) from pdfContent
+app.post('/transcript', userController.storeTranscript) // sets transcript data (pdfContent, username, studentUsername, date&time updated)
+app.put('/transcript', userController.updateTranscript) //updates transcript data (pdfContent, username, studentUsername) by pdfContent
+app.delete('/transcript/:pdfContent', userController.deleteTranscript) //deletes transcript data (pdfContent, username, studentUsername) by pdfContent
+app.get('/transcript/query/username/:username', userController.getTranscriptByUsername) //gets transcripts by username
 
 //school
 app.get('/school/:schoolID', schoolController.getSchool) //gets school data (name and address) from schoolID

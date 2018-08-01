@@ -10,22 +10,27 @@ mongoose.connect('mongodb://localhost/transcript')
 const db = mongoose.connection
 db.on('error', console.error.bind(console, 'connection error:'))
 db.once('open', function() {
-    console.log('HASH SCHEMA CONNECTED') //just change for whatever schema you're connecting
+    console.log('TRANSCRIPT SCHEMA CONNECTED') //just change for whatever schema you're connecting
 });
 // should be mongoose connection for everything in ANY PROJECT EVER^^^^
 
 const Schema = mongoose.Schema
-const HashSchema = new Schema({
+const TranscriptSchema = new Schema({
   
-  hashValue: { //hash of transcript pdf contents
+  pdfContent: { 
     type: String,
     required: true,
-    // index: { unique: true }
+    index: { unique: true }
+  },
+
+  hashValue: { //hash of transcript pdf contents
+    type: String, 
+    required: true,
   },
 
   username: { //matches an email in users, used to see who issued the transcript hash
     type: String,
-    required: true,
+    required: true
   },
   
   studentUsername: { //username of the student the transcript belongs to
@@ -43,4 +48,4 @@ const HashSchema = new Schema({
 })
 
 
-module.exports = mongoose.model('Hash', HashSchema)
+module.exports = mongoose.model('Transcript', TranscriptSchema)

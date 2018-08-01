@@ -12,9 +12,6 @@ const transcriptHashingUtil = {}
 
 
 
-
-
-
 // OLD CODE
 
 //derive private key from signature and check it against address

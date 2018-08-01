@@ -12,7 +12,7 @@ Property of EmblemEDU
 const userRepository = require('../repositories/user.repository')
 const guidanceRepository = require('../repositories/guidance.repository')
 const studentRepository = require('../repositories/student.repository')
-const hashRepository = require('../repositories/hash.repository')
+const transcriptRepository = require('../repositories/transcript.repository')
 
 //just in case we need it later
 const schoolRepository = require('../repositories/school.repository')
@@ -131,12 +131,12 @@ userService.deleteStudent = (username) => {
 /////////////////////////////////////////////
 
 /*
-In this document, 'hash' refers to thw whole hash JS object whereas 'hashValue' refers to the hash itself. 
+In this document, 'hash' refers to thw whole hash JS object whereas 'pdfContent' refers to the hash itself. 
 
 Example: 
 
 const guidance1 ={
-    hashValue: 'cbe3d16cc9f5cef09648e350a1abfbd4a3fb02b7a7f1cd6c02c23b5ee9857e58',
+    pdfContent: 'cbe3d16cc9f5cef09648e350a1abfbd4a3fb02b7a7f1cd6c02c23b5ee9857e58',
     username: 'euler@python.com'
     studentUsername: 'student@emblemEDU.com'
 
@@ -144,27 +144,31 @@ const guidance1 ={
 */
 
 
-//get hash
-userService.getHash = (hashValue) => {
-    return hashRepository.getHash(hashValue)
+//get transcript
+userService.getTranscript = (pdfContent) => {
+    return transcriptRepository.getTranscript(pdfContent)
 }
 
-//create hash
-userService.storeHash = (hashInfo) => {
-    return hashRepository.storeHash(hashInfo)   
+//create transcript
+userService.storeTranscript = (transcriptInfo) => {
+    return transcriptRepository.storeTranscript(transcriptInfo)   
 }
 
-//update hash
-userService.updateHash = (hashInfo) => {
-    return hashRepository.updateHash(hashInfo)
+//update transcript
+userService.updateTranscript = (transcriptInfo) => {
+    return transcriptRepository.updateTranscript(transcriptInfo)
 }    
-//delete hash
-userService.deleteHash = (hashValue) => {
-    return hashRepository.deleteHash(hashValue)
+//delete transcript
+userService.deleteTranscript = (pdfContent) => {
+    return transcriptRepository.deleteTranscript(pdfContent)
 }
+
+// userService.getTranscriptByUsername = (username) => {
+//     return transcriptRepository.getTranscriptByUsername(username)
+// }
 
 ///////////////////////////////////////////////
-// CODE FOR HASH INFO ENDS HERE //////////////
+// CODE FOR transcript INFO ENDS HERE //////////////
 /////////////////////////////////////////////
 
 module.exports = userService

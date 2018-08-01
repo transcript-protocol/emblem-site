@@ -6,7 +6,7 @@ const server = require('../src/server.js')
 const User = require('../src/entities/User')
 const Guidance = require('../src/entities/Guidance')
 const Student = require('../src/entities/Student')
-const Hash = require('../src/entities/Hash')
+const Transcript = require('../src/entities/Transcript')
 const School = require('../src/entities/School')
 
 
@@ -132,110 +132,132 @@ describe('HTTP Server', function() {
     //     }) 
     // })
 
-    // describe('/hash', function(){
+    describe('/transcript', function(){
 
-    //     const hash1 = {
-    //         hashValue: 'cbe3d16cc9f5cef09648e350a1abfbd4a3fb02b7a7f1cd6c02c23b5ee9857e58',
-    //         username: 'euler@python.com',
-    //         studentUsername: 'student@emblem.edu', 
-    //         schoolID: '12345',
-
-    //     }
-
-    //     const hash2 = {
-    //         hashValue: 'cbe3d16cc9f5cef09648e350a1abfbd4a3fb02b7a7f1cd6c02c23b5ee9857e58',
-    //         username: 'euler@python.com',
-    //         studentUsername: 'student1@emblem.edu', 
-    //         schoolID: '12345',
-    //     }
-
-
-    //     it('should return 404 for a hash that doesnt exist', function(done) { //this is how mocha expects HTTP requests to be written: with a done parameter to the function
-    //         request(server).get('/hash/cbe3d16cc9f5cef09648e350a1abfbd4a3fb02b7a7f1cd6c02c23b5ee9857e58').expect(404, done)
-    //     })
-    
-    //     it('should return 200 for sucessfullly added hash', function(done) {
-    //         request(server).post('/hash').send(hash1).expect(200, done)
-    //     })
-
-    //     it('should return 200 for getting hash', function(done) { //this is how mocha expects HTTP requests to be written: with a done parameter to the function
-    //         request(server).get('/hash/cbe3d16cc9f5cef09648e350a1abfbd4a3fb02b7a7f1cd6c02c23b5ee9857e58').expect(200, done)
-    //     })
-    
-
-    //     it('should return 200 for sucessfully updated user', function(done){
-    //         request(server).put('/hash').send(hash2).expect(200, done)
-    //     })
-        
-    //     it('should return 204 for sucessfully deleted user', function(done) {
-    //         request(server).delete('/hash/cbe3d16cc9f5cef09648e350a1abfbd4a3fb02b7a7f1cd6c02c23b5ee9857e58').expect(204, done)
-    //     }) 
-    // })
-
-    describe('/school', function() {
-        const school1 = {
-            schoolID: '12345',
-            schoolName: 'Hawkins',
-            addrLn1: '47 Pitcher Ave',
-            city: 'Medford',
-            state: 'MA', 
-            zip: '02155'
-        }
-
-        const student3 ={
+        const transcript1 = {
+            pdfContent: 'hash value1',
+            hashValue: 'hash value1',
             username: 'euler@python.com',
-            firstName: 'Scott',
-            middleName: 'ST',
-            lastName: 'Clarke', 
-            userDOB: '10041952',
-            schoolID: '22345',
-            previousSchoolIDs: ['12456', '12567']
+            studentUsername: 'student@emblem.edu', 
+            schoolID: '12345',
+
         }
 
-        const school2 = {
-            schoolID: '22345',
-            schoolName: 'Hawkins',
-            addrLn1: '24 Sagamore Ave',
-            addrLn2: 'PO BOX 223',
-            city: 'Medford',
-            state: 'MA', 
-            zip: '02155'
+        const transcript2 = {
+            pdfContent: 'hash value2',
+            hashValue: 'hash value2',
+            username: 'euler@python.com',
+            studentUsername: 'student1@emblem.edu', 
+            schoolID: '12345',
         }
 
-        // just to make sure all the stuff from previous tests got cleared
-        it('should return 204 for sucessfully deleted school', function(done) {
-            request(server).delete('/school/12345').expect(204, done)
+
+        it('should return 204 for sucessfully deleted user', function(done) {
+            request(server).delete('/transcript/hash value1').expect(204, done)
+        }) 
+
+        it('should return 204 for sucessfully deleted user', function(done) {
+            request(server).delete('/transcript/hash value2').expect(204, done)
+        }) 
+
+        it('should return 404 for a transcript that doesnt exist', function(done) { //this is how mocha expects HTTP requests to be written: with a done parameter to the function
+            request(server).get('/transcript/hash value').expect(404, done)
+        })
+    
+        it('should return 200 for sucessfullly added transcript', function(done) {
+            request(server).post('/transcript').send(transcript1).expect(200, done)
         })
 
-        //just to make sure all the stuff from previous tests got cleared
-        it('should return 204 for sucessfully deleted school', function(done) {
-            request(server).delete('/school/22345').expect(204, done)
+        it('should return 200 for sucessfullly added transcript', function(done) {
+            request(server).post('/transcript').send(transcript2).expect(200, done)
         })
 
-
-        it('should return 404 for a school that doesnt exist', function(done) { //this is how mocha expects HTTP requests to be written: with a done parameter to the function
-            request(server).get('/school/12345').expect(404, done)
-        })
-        
-        it('should return 200 for sucessfullly added school', function(done) {
-            request(server).post('/school/12345').send(school1).expect(200, done)
+        it('should return 200 for getting transcript', function(done) { //this is how mocha expects HTTP requests to be written: with a done parameter to the function
+            request(server).get('/transcript/hash value1').expect(200, done)
         })
 
-        it('should return 200 for getting school', function(done) { //this is how mocha expects HTTP requests to be written: with a done parameter to the function
-            request(server).get('/school/12345').expect(200, done)
+        it('should return 200 for getting transcript', function(done) { //this is how mocha expects HTTP requests to be written: with a done parameter to the function
+            request(server).get('/transcript/hash value1').expect(200, done)
         })
 
-        // it('should return 200 for sucessfully updated school', function(done){
-        //     request(server).put('/school/22345').send(school2).expect(200, done)
+        // it('should return 200 for getting transcripts', function(done) { //this is how mocha expects HTTP requests to be written: with a done parameter to the function
+        //     request(server).get('/transcript/query/username/euler@python.com').expect(200, done)
+        // })
+    
+
+        // it('should return 200 for sucessfully updated user', function(done){
+        //     request(server).put('/transcript').send(transcript2).expect(200, done)
         // })
         
-        // it('should return 204 for sucessfully deleted school', function(done) {
-        //     request(server).delete('/school/22345').expect(204, done)
-        // })
-
-        
-        
+        it('should return 204 for sucessfully deleted user', function(done) {
+            request(server).delete('/transcript/hash value').expect(204, done)
+        })
     })
+
+    // describe('/school', function() {
+    //     const school1 = {
+    //         schoolID: '12345',
+    //         schoolName: 'Hawkins',
+    //         addrLn1: '47 Pitcher Ave',
+    //         city: 'Medford',
+    //         state: 'MA', 
+    //         zip: '02155'
+    //     }
+
+    //     const student3 ={
+    //         username: 'euler@python.com',
+    //         firstName: 'Scott',
+    //         middleName: 'ST',
+    //         lastName: 'Clarke', 
+    //         userDOB: '10041952',
+    //         schoolID: '22345',
+    //         previousSchoolIDs: ['12456', '12567']
+    //     }
+
+    //     const school2 = {
+    //         schoolID: '22345',
+    //         schoolName: 'Hawkins',
+    //         addrLn1: '24 Sagamore Ave',
+    //         addrLn2: 'PO BOX 223',
+    //         city: 'Medford',
+    //         state: 'MA', 
+    //         zip: '02155'
+    //     }
+
+    //     // just to make sure all the stuff from previous tests got cleared
+    //     it('should return 204 for sucessfully deleted school', function(done) {
+    //         request(server).delete('/school/12345').expect(204, done)
+    //     })
+
+    //     //just to make sure all the stuff from previous tests got cleared
+    //     it('should return 204 for sucessfully deleted school', function(done) {
+    //         request(server).delete('/school/22345').expect(204, done)
+    //     })
+
+
+    //     it('should return 404 for a school that doesnt exist', function(done) { //this is how mocha expects HTTP requests to be written: with a done parameter to the function
+    //         request(server).get('/school/12345').expect(404, done)
+    //     })
+        
+    //     it('should return 200 for sucessfullly added school', function(done) {
+    //         request(server).post('/school/12345').send(school1).expect(200, done)
+    //     })
+
+    //     it('should return 200 for getting school', function(done) { //this is how mocha expects HTTP requests to be written: with a done parameter to the function
+    //         request(server).get('/school/12345').expect(200, done)
+    //     })
+
+    //     it('should return 200 for sucessfully updated school', function(done){
+    //         request(server).put('/school/22345').send(school2).expect(200, done)
+    //     })
+        
+    //     it('should return 204 for sucessfully deleted school', function(done) {
+    //         request(server).delete('/school/22345').expect(204, done)
+    //     })
+
+        
+        
+    // })
 
     
 })

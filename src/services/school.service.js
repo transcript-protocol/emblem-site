@@ -4,7 +4,7 @@ const schoolRepository = require('../repositories/school.repository')
 const userRepository = require('../repositories/user.repository')
 const guidanceRepository = require('../repositories/guidance.repository')
 const studentRepository = require('../repositories/student.repository')
-const hashRepository = require('../repositories/hash.repository')
+const transcriptRepository = require('../repositories/transcript.repository')
 
 const schoolService = {}
 
