@@ -48,7 +48,7 @@ app.get('/transcript/:pdfContent', userController.getTranscript) //gets transcri
 app.post('/transcript', userController.storeTranscript) // sets transcript data (pdfContent, username, studentUsername, date&time updated)
 app.put('/transcript', userController.updateTranscript) //updates transcript data (pdfContent, username, studentUsername) by pdfContent
 app.delete('/transcript/:pdfContent', userController.deleteTranscript) //deletes transcript data (pdfContent, username, studentUsername) by pdfContent
-app.get('/transcript/query/username/:username', userController.getTranscriptByUsername) //gets transcripts by username
+// app.get('/transcript/query/username/:username', userController.getTranscriptByUsername) //gets transcripts by username
 
 //school
 app.get('/school/:schoolID', schoolController.getSchool) //gets school data (name and address) from schoolID
