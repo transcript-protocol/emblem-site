@@ -56,14 +56,24 @@ userController.updateUser = (req, res) => {
     })
 }
 
+userController.verifyUser = (req, res) => {
+    userService.verifyUser(req.body).then((data) => {
+        res.status(204).end()
+    })
+    .catch((err) => {
+        console.log(err)
+        res.status(401).end('USER NOT AUTHORIZED')
+    })
+}
+
 userController.deleteUser = (req, res) => {
     userService.deleteUser(req.params.username).then((data) => {
-            res.status(204).end()
-        })
-        .catch((err) => {
-            console.log(err)
-            res.status(400).end('DELETE_FAILED')
-        })
+        res.status(204).end()
+    })
+    .catch((err) => {
+        console.log(err)
+        res.status(400).end('DELETE_FAILED')
+    })
 }
 
 
@@ -275,6 +285,8 @@ userController.deleteTranscript = (req, res) => {
             res.status(400).end('DELETE_FAILED')
         })
 }
+
+
 
 // userController.getTranscriptByUsername = (req, res) => {
 //     userService.getTranscriptByUsername(req.body)

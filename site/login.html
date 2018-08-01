@@ -1,7 +1,40 @@
 <!DOCTYPE html>
 <head>
+  <link rel="stylesheet" href="signup.css">
+  <title>Login</title>
+  <link rel="shortcut icon" type="image/png" href="/emblemBldgSealFavicon.png"/>
 
 </head>
 <body>
-  
+
+    <div class="container">
+
+        <form id="signup">
+
+            <div class="header">
+
+                <h3>Welcome back!</h3>
+
+                <p>Enter your login credentials here.</p>
+
+            </div>
+
+            <div class="sep"></div>
+
+            <div class="inputs"> 
+
+                <input type="email" id="email" placeholder="E-mail" autofocus required/>
+
+                <input type="password" id="password" placeholder="Password" required/>
+
+                <button id="submit" onclick="submitUser();" href="#">LOGIN</button>
+
+                <script src="app.js"></script>
+
+            </div>
+
+        </form>
+
+    </div>
+
 </body>

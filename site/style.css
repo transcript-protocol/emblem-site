@@ -1,0 +1,20 @@
+body {
+    background-image: url("gradient.png");
+    font-family: "Helvetica Neue", Helvetica, Arial;
+    padding-top: 20px;
+}
+
+a {
+    color: black;
+}
+
+/* footer */
+
+.footer {
+    padding-top: 20px;
+  }
+  
+  .footer p {
+    color: #fff;
+    text-align: center;
+  }

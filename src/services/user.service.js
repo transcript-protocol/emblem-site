@@ -50,6 +50,9 @@ userService.updateUser = (userInfo) => {
     return userRepository.updateUser(userInfo)
 }
 
+userService.verifyUser = (userInfo) => {
+    return userRepository.verifyUser(userInfo)
+}
 
 //delete user
 userService.deleteUser = (username) => {

@@ -1,14 +1,96 @@
+html {}
+
 body {
-    background-image: url("gradient.png");
-    font-family: "Helvetica Neue", Helvetica, Arial;
-    padding-top: 20px;
+    font-family: Roboto, sans-serif;
+    color: #0f3c4b;
+    background-image: url("lightGradient.png");
+    padding: 5rem 1.25rem;
+    /* 80 20 */
 }
+
+.container-fluid {
+    padding-top: 50px;
+    padding-bottom: 75px;
+    background: rgba(255, 255, 255, 0.3);
+}
+
+
+/*
+Upload PDF 
+*/
+
+#containerDrop {
+    padding: 0px 25px 25px;
+    background: #fff;
+    box-shadow: 0px 0px 0px 5px rgba( 255, 255, 255, 0.4), 0px 4px 20px rgba( 0, 0, 0, 0.33);
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    display: table;
+    position: static;
+    text-align: center;
+    width: 500px;
+    max-width: 500px;
+    height: 400px;
+    max-height: 400px;
+    margin: 0 auto;
+}
+
+.container h1 {
+    color: #000;
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 75px;
+}
+
+.inputfile {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+}
+
+.inputfile+label {
+    font-size: 1.25em;
+    font-weight: 700;
+    color: white;
+    background: -moz-linear-gradient( top, #a4b0cb 0%, #b9c5dd);
+    background: -webkit-gradient( linear, left top, left bottom, from(#a4b0cb), to(#b9c5dd));
+    display: inline-block;
+    width: 75%;
+    height: 200px;
+    margin-top: 10px;
+    margin-bottom: 75px;
+    padding: 70px 0;
+    color: #fff;
+    font-size: 20px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-align: center;
+    text-decoration: none;
+    box-shadow: 0px 5px 5px rgba(000, 000, 000, 0.1), inset 2px 2px 2px rgba(255, 255, 255, 0.5);
+}
+
+.inputfile:focus+label,
+.inputfile+label:hover {
+    background: #cfcfcf;
+}
+
+.inputfile+label {
+    cursor: pointer;
+    /* "hand" cursor */
+}
+
+
+/* Submit form CSS  */
 
 h3 {
     text-align: center;
 }
 
-.container {
+#containerForm {
     width: 406px;
     max-width: 406px;
     margin: 0 auto;
@@ -70,19 +152,12 @@ input:-moz-placeholder {
     color: #b5b5b5;
 }
 
-
-#signup .inputs input[type="accountType"],
-input[type=email],
+#signup .inputs input[type=username],
 input[type=password],
-input[type=First],
-input[type=Middle],
-input[type=Last],
-input[type=DOB],
-input[type=School],
-input[type=confirmPassword] {
-
+input[type=studentUsername],
+input[type=schoolID] {
     background: #f5f5f5;
-    font-size: 0.8rem;
+    font-size: 1.5rem;
     -moz-border-radius: 3px;
     -webkit-border-radius: 3px;
     border-radius: 3px;
@@ -99,20 +174,6 @@ input[type=password]:focus {
     background: #fff;
     box-shadow: 0px 0px 0px 3px #fff38e, inset 0px 2px 3px rgba( 0, 0, 0, 0.2), 0px 5px 5px rgba( 0, 0, 0, 0.15);
     outline: none;
-}
-
-#signup .inputs .checkboxy {
-    display: block;
-    position: static;
-    height: 25px;
-    margin-top: 10px;
-    clear: both;
-}
-
-#signup .inputs input[type=checkbox] {
-    float: left;
-    margin-right: 10px;
-    margin-top: 3px;
 }
 
 #signup .inputs label.terms {
@@ -149,4 +210,16 @@ input[type=password]:focus {
 #signup .inputs #submit:hover {
     background: -moz-linear-gradient( top, #a4b0cb 0%, #b9c5dd);
     background: -webkit-gradient( linear, left top, left bottom, from(#a4b0cb), to(#b9c5dd));
+}
+
+
+/* footer */
+
+.footer {
+    padding-top: 20px;
+}
+
+.footer p {
+    color: #fff;
+    text-align: center;
 }

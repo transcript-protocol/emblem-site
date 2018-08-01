@@ -150,3 +150,14 @@ input[type=password]:focus {
   background: -moz-linear-gradient( top, #a4b0cb 0%, #b9c5dd);
   background: -webkit-gradient( linear, left top, left bottom, from(#a4b0cb), to(#b9c5dd));
 }
+
+/* footer */
+
+.footer {
+  padding-top: 20px;
+}
+
+.footer p {
+  color: #fff;
+  text-align: center;
+}

@@ -34,6 +34,16 @@ userRepository.updateUser = (userInfo) => {
 }
 
 
+userRepository.verifyUser = (userInfo) => {
+    username = userInfo.username
+    password = userInfo.password
+    return userRepository.getUser(username)
+    .then( (user) => {
+        User.comparePassword(password, cb)
+    })
+
+}
+
 userRepository.deleteUser = (username) => {
     return User.findOne({ username }).remove()
 }

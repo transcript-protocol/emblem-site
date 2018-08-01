@@ -30,6 +30,7 @@ app.get('/user/:username', userController.getUser) //gets user account data (una
 app.post('/user/:username', userController.storeUser) // sets user account data (uname, pass, account type)
 app.put('/user/:username', userController.updateUser) //updates user account data (uname, pass, account type) by username
 app.delete('/user/:username', userController.deleteUser) //deletes user account (uname, pass, account type) by username
+app.get('user/verify/:username', userController.verifyUser)
 
 //guidance counselor
 app.get('/guidance/:username', userController.getGuidance) //gets guidance counselor data (name, DOB, school name) from username
