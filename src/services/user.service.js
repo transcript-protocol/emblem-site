@@ -13,7 +13,7 @@ const userRepository = require('../repositories/user.repository')
 const guidanceRepository = require('../repositories/guidance.repository')
 const studentRepository = require('../repositories/student.repository')
 const transcriptRepository = require('../repositories/transcript.repository')
-const keccak256 = require('js-sha3').keccak256;
+// const keccak256 = require('js-sha3').keccak256;
 
 
 //just in case we need it later
