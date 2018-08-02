@@ -30,16 +30,20 @@ describe('HTTP Server', function() {
             })
         
         it('should return 200 for sucessfullly added user', function(done) {
-            request(server).post('/user/euler@python.com').send(user1).expect(200, done)
+            request(server).post('/user').send(user1).expect(200, done)
         })
 
-        it('should return something idk what for ye'), function(done) {
-            request(server).get('/user/verify/euler@python.com').send(user1).expect(204, done)
-        }
+        it('should return 200 for sucessfully getting a user', function(done) { //this is how mocha expects HTTP requests to be written: with a done parameter to the function
+            request(server).get('/user/euler@python.com').expect(200, done)
+        })
 
-        // it('should return 200 for sucessfully updated user', function(done){
-        //     request(server).put('/user').send(user2).expect(200, done)
-        // })
+        it('should return True for verified user', function(done) {
+            request(server).post('/user/login').send(user1).expect("true", done)
+        })
+
+        it('should return 204 for sucessfully updated user', function(done){
+            request(server).put('/user/euler@python.com').send(user2).expect(200, done)
+        })
         
         it('should return 204 for sucessfully deleted user', function(done) {
             request(server).delete('/user/euler@python.com').expect(204, done)

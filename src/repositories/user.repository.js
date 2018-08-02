@@ -34,14 +34,16 @@ userRepository.updateUser = (userInfo) => {
 }
 
 
-userRepository.verifyUser = (userInfo) => {
+userRepository.loginUser = (userInfo) => {
     username = userInfo.username
     password = userInfo.password
+    console.log('REPOSITORY')
     return userRepository.getUser(username)
-    .then( (user) => {
-        User.comparePassword(password, cb)
+    .then( (User) => {
+        return new Promise((resolve, reject) => {
+            User.comparePassword(password, (e, data) => e ? reject(e) : resolve(data)) //terniary operator
+        })
     })
-
 }
 
 userRepository.deleteUser = (username) => {

@@ -48,7 +48,7 @@ userController.updateUser = (req, res) => {
         if (!user){
             res.status(404).end('User does not exist')
         }else{
-            res.status(200).end('User sucessfully updated')
+            res.end('User sucessfully updated')
         }
     })
     .catch ((err) => {
@@ -56,9 +56,11 @@ userController.updateUser = (req, res) => {
     })
 }
 
-userController.verifyUser = (req, res) => {
-    userService.verifyUser(req.body).then((data) => {
-        res.status(204).end()
+userController.loginUser = (req, res) => {
+    console.log('CONTROLLER')
+    userService.loginUser(req.body).then((data) => {
+        console.log('USER LOGGED IN', data)
+        res.end(JSON.stringify(data)) //defaults to 200
     })
     .catch((err) => {
         console.log(err)

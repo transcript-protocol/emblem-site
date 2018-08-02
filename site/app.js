@@ -9,14 +9,17 @@ Takes elements from form and creates a user object to be passed to the back end
 //messy general fetch code starts here///
 ////////////////////////////////////////
 
-function generalGet(_url) {
+const baseUrl = 'http://localhost:4000/' //change this to base url of remote server once it's set up
+
+
+function generalGet(_url) { //need to modify to check for authorization
   fetch(_url)
   .then(function(response) {
       console.log(response);
   })
 }
 
-function generalPost(_url, _reqBody) {
+function generalPost(_url, _reqBody) { 
   fetch(_url, { 
       method: "post",
       headers: {
@@ -30,7 +33,7 @@ function generalPost(_url, _reqBody) {
   })
 }
 
-function generalPut(_url, _reqBody) {
+function generalPut(_url, _reqBody) {  //need to modify to check for authorization
   fetch(_url, {
     method: "put",
     headers: {
@@ -42,7 +45,7 @@ function generalPut(_url, _reqBody) {
   })
 }
 
-function generalDelete(_url) {
+function generalDelete(_url) {  //need to modify to check for authorization
   fetch(_url, {
     method: "delete"
   })
@@ -188,26 +191,25 @@ function scrapeStudent() {
 //gets data from form and makes post requests to localhost
 function submitUser () {
   if (getTermsCheckValue() === true ) {
-    baseUrl = 'http://localhost:4000/' //change this to base url of remote server once it's set up
     var accountType = getAccountTypeRadioValue()
     user = scrapeUser()
     // console.log(user)
     username = String(user.username)
     // console.log(username)
     var studentUrl
-    const userUrl = baseUrl + 'user/' + username
+    const userUrl = baseUrl + 'user'
     console.log(userUrl)
     generalPost(userUrl, user)
     if (accountType == 'guidance'){
         guidance = scrapeCounselor()
         // console.log(guidance)
-        const guidanceUrl = baseUrl + 'guidance/' + username
+        const guidanceUrl = baseUrl + 'guidance'
         console.log(guidanceUrl)
         generalPost(guidanceUrl, guidance)
     } else if (accountType == 'student'){
         student = scrapeStudent()
         // console.log(student)
-        studentUrl = baseUrl + 'student/' + username
+        studentUrl = baseUrl + 'student'
         console.log(studentUrl)
         generalPost(studentUrl, student)
     }
@@ -216,8 +218,43 @@ function submitUser () {
   }
 
 
-}
+} 
 
 /////////////////////////////////////////
 //code for registering user ends here///
+///////////////////////////////////////
+
+/////////////////////////////////////////
+//code for loging in user starts here///
+///////////////////////////////////////
+
+
+function loginUser () {
+  const username = document.getElementById("email").value
+  const password = document.getElementById("password").value
+  const userUrl = baseUrl + 'user/' + username
+  console.log(userUrl)
+  const user = {
+    'username': username,
+    'password': password,
+  }
+  loginUrl = baseUrl + 'user/login'
+  generalPost(loginUrl, user)
+  
+  
+}
+// .then( (user) => {
+  
+//   .then(passwordMatch => {
+//     if(passwordMatch != "true") {
+//       alert("password did not match")
+//       return passwordMatch
+//     }else {
+//       return passwordMatch
+//     }
+//   })
+// })
+
+/////////////////////////////////////////
+//code for loging in user starts here///
 ///////////////////////////////////////
