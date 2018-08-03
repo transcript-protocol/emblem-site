@@ -29,7 +29,6 @@ transcriptRepository.getTranscript = (pdfContent) => { //find object by pdf cont
 }
 
 transcriptRepository.storeTranscript = (transcriptInfo) => { //input whole object
-    console.log('CLIENT INPUT: ', transcriptInfo)
     const newTranscript = new Transcript(transcriptInfo)
     return newTranscript.save()
     .then( transcript => {

@@ -166,9 +166,12 @@ userService.getTranscript = (pdfContent) => {
 
 //create transcript
 userService.storeTranscript = (transcriptInfo) => {
+    console.log('CLIENT INPUT: ', transcriptInfo)
     //get hashValue from transcriptInfo and hash it, then resave it here
+    console.log('OLD hashVALUE HERE: ', transcriptInfo.hashValue)
     transcriptInfo.hashValue = keccak256(transcriptInfo.hashValue)
-    return transcriptRepository.storeTranscript(transcriptInfo)   
+    console.log('NEW hashVALUE HERE: ', transcriptInfo.hashValue)
+    return transcriptRepository.storeTranscript(transcriptInfo)
 }
 
 //update transcript
