@@ -1,0 +1,8 @@
+{
+  "name": "emblem-site",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:acuddeback/emblem-site.git",
+  "author": "acuddeback <atc@cuddeback.org>",
+  "license": "MIT"
+}
