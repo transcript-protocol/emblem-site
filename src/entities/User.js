@@ -21,14 +21,45 @@ const UserSchema = new Schema({
         required: true,
         index: { unique: true }
     },
+
     password: {
         type: String,
         required: true
     },
+
     accountType: {
         type: String,
         required: true
     },
+
+    firstName: { //suggest school email for GC and not school email for student
+        type: String,
+        required: true
+    },
+
+    middleName: { //suggest school email for GC and not school email for student
+        type: String
+    },
+
+    lastName: { //suggest school email for GC and not school email for student
+        type: String,
+        required: true
+    },
+
+    userDOB: { //suggest school email for GC and not school email for student
+        type: String,
+        required: true
+    },
+
+    schoolID: {
+        type: String, 
+        required: true
+    },
+
+    previousSchoolIDs: {
+        type: Array
+    },
+    
     sequence: Number,
     updatedAt: { type: Date, default: Date.now }
 })
@@ -60,11 +91,13 @@ UserSchema.pre('save', function(next) {
     });
 });
 
-UserSchema.methods.comparePassword = function(candidatePassword, cb) {
-    bcrypt.compare(candidatePassword, this.password, function(err, isMatch) {
-        if (err) return cb(err);
-        cb(null, isMatch);
-    });
-};
+UserSchema.methods.comparePassword = function(candidatePassword) {
+    return new Promise((resolve, reject) => {
+        bcrypt.compare(candidatePassword, this.password, (err, passwordMatch) => {
+            if (err) reject(err)
+            resolve({ passwordMatch, id: this._id })
+        })
+    })
+}
 
 module.exports = mongoose.model('User', UserSchema)

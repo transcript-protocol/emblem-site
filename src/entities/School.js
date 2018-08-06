@@ -14,7 +14,7 @@ db.once('open', function() {
 
 const Schema = mongoose.Schema
 const SchoolSchema = new Schema({
-    schoolID: { //matches an email in users, aken from one html field
+    schoolID: { //matches an email in users, aken from one json field
       type: String,
       required: true,
       index: { unique: true }

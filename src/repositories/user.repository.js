@@ -5,49 +5,51 @@ const User = require('../entities/User')
 
 const userRepository = {}
 
-userRepository.getUser = (username) => {
-    //if (id.match(/^[0-9a-fA-F]{24}$/)) {
-        return User.findOne({ username })
-    //}
-    //throw new Error('id format is not valid')
+userRepository.getUser = id => {
+    if (id.match(/^[0-9a-fA-F]{24}$/)) {
+        return User.findById(id)
+    }
+    throw new Error('id format is not valid')
 }
 
-userRepository.storeUser = (userInfo) => {
+userRepository.storeUser = userInfo => {
     console.log('CLIENT INPUT: ', userInfo)
     const newUser = new User(userInfo)
     return newUser.save()
     .then( user => {
-        console.log('DATABASE ENTRY:', user)
-        return user
+        console.log('USER CREATED: ', user.username)
+        return user._id
     })
 }
 
-userRepository.updateUser = (userInfo) => {
-    return User.findOne({ username: userInfo.username })
+userRepository.updateUser = userInfo => {
+    return User.findById(userInfo.id)
     .then( user => {
         console.log('CLIENT INPUT: ', userInfo)
         return user.set(userInfo).save()
     }).then( user => {
-        console.log('DATABASE ENTRY ', user)
+        console.log('USER UPDATED: ', user.username)
         return user
     })
 }
 
-
-userRepository.loginUser = (userInfo) => {
+userRepository.loginUser = userInfo => {
     username = userInfo.username
     password = userInfo.password
-    console.log('REPOSITORY')
-    return userRepository.getUser(username)
-    .then( (User) => {
-        return new Promise((resolve, reject) => {
-            User.comparePassword(password, (e, data) => e ? reject(e) : resolve(data)) //terniary operator
-        })
+    return User.findOne({ username })
+    .then( user => user.comparePassword(password) ) //terniary operator
+    .then( data => {
+        const { passwordMatch, id } = data
+
+        if(!passwordMatch) {
+            throw new Error("Password doesn't match") //ends here because it's throwing an error (i.e. it has a return)
+        }
+        return id //return the user's id to generate the token if there is a match
     })
 }
 
-userRepository.deleteUser = (username) => {
-    return User.findOne({ username }).remove()
+userRepository.deleteUser = id => {
+    return User.findById(id).remove()
 }
 
 module.exports = userRepository
