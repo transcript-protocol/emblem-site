@@ -5,7 +5,6 @@
 **/
 
 
-
 /*
 Takes a pdf input and turns it into a url  
 */
@@ -14,26 +13,29 @@ window.URL = window.URL || window.webkitURL;
 var fileElem = document.getElementById("fileElem"),
     fileList = document.getElementById("fileList");
 
+
+
 function handleFiles(files) {
     console.log('FILES ', files);
     if (!files.length) {
-        fileList.innerHTML = "<h1>Choose Transcript</h1>";
+        fileList.innerHTML = "<h1>Choose Transcript</h1>"
     } else {
-        fileList.innerHTML = "<h1>Upload Transcript Here</h1>";
-        var list = document.createElement("ul");
-        fileList.appendChild(list);
-        for (var i = 0; i < files.length; i++) {
-            var li = document.createElement("li");
 
-            var img = document.createElement("img"); 
-            img.src = window.URL.createObjectURL(files[i]); 
-            img.height = 60; 
+        document.getElementById("fileElem").innerHTML = "Success!"
+
+        var img = document.createElement("img"); 
+        img.src = window.URL.createObjectURL(files[0]); 
+        img.height = 60; 
+
+        var username = document.getElementById("username").value
+        var studentUsername = document.getElementById("studentUsername").value
+        var schoolID = document.getElementById("schoolID").value
+
+         
+        getContent(img.src).then(fileText => console.log(createUpload(username, studentUsername, schoolID, fileText)))
 
 
-            // var info = document.createElement("span"); 
-            var content = getContent(img.src)
-            console.log(content)
-        } 
+
     }
 }
 
@@ -41,13 +43,13 @@ function handleFiles(files) {
  * Returns the data
  */
 function getContent(pdfUrl) {
-    PDFJS.getDocument(pdfUrl)
+    return PDFJS.getDocument(pdfUrl)
         .then(pdf => pdf.getPage(1)) // pages start at 1
         .then(page => page.getTextContent())
         .then(joinTextData)
         .then(data => {
             var pdfText = String(data)
-            console.log("PDF TEXT: " + pdfText)
+            console.log("Pdf text INSIDE of getContent: " + pdfText)
             return pdfText
         })
         .catch(function(err) {
@@ -66,16 +68,4 @@ function joinTextData(textData) {
     // 	}
     // ]}
     return textData.items.map(item => item.str).join(' ')
-}
-
-/*
-Hashes the text
-*/
-function hashText(text) {
-    var hashed = sha256(text)
-    return hashed
-}
-
-function alert() {
-    console.log("Transcript Uploaded!")
 }

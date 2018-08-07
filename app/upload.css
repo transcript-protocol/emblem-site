@@ -3,15 +3,17 @@ html {}
 body {
     font-family: Roboto, sans-serif;
     color: #0f3c4b;
-    background-image: url("./images/lightGradient.png");
+    background-color: #fff;
     padding: 5rem 1.25rem;
     /* 80 20 */
 }
 
 .container-fluid {
+    margin-left: 15px;
+    margin-right: 15px;
     padding-top: 50px;
     padding-bottom: 75px;
-    background: rgba(255, 255, 255, 0.3);
+    background: url("lightGradient.png")
 }
 
 
