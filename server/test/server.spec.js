@@ -167,7 +167,6 @@ describe('HTTP Server', function() {
 
         const transcript1 = {
             pdfContent: 'hash value1',
-            hashValue: 'hash value1',
             username: 'euler@python.com',
             studentUsername: 'student@emblem.edu', 
             schoolID: '12345',
@@ -176,7 +175,6 @@ describe('HTTP Server', function() {
 
         const transcript2 = {
             pdfContent: 'hash value2',
-            hashValue: 'hash value2',
             username: 'euler@python.com',
             studentUsername: 'student1@emblem.edu', 
             schoolID: '12345',

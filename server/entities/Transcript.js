@@ -23,11 +23,6 @@ const TranscriptSchema = new Schema({
     index: { unique: true }
   },
 
-  hashValue: { //hash of transcript pdf contents
-    type: String, 
-    required: true,
-  },
-
   username: { //matches an email in users, used to see who issued the transcript hash
     type: String,
     required: true

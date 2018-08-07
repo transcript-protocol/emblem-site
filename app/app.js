@@ -258,3 +258,28 @@ function loginUser () {
 /////////////////////////////////////////
 //code for loging in user starts here///
 ///////////////////////////////////////
+
+///////////////////////////////////////////////
+//code for uploading Transcript starts here///
+/////////////////////////////////////////////
+
+class Transcript {
+  constructor(pdfText, username, studentUsername, schoolID) {
+      this.pdfText = pdfText
+      this.username = username
+      this.studentUsername = studentUsername
+      this.schoolID = schoolID
+      
+  }
+}
+
+function createTranscript(pdfText, username, studentUsername, schoolID) {
+  upload = new Transcript(pdfText, username, studentUsername, schoolID)
+  console.log(upload)
+  console.log("why meeeeee")
+  return upload
+}
+
+/////////////////////////////////////////////
+//code for uploading Transcript ends here///
+///////////////////////////////////////////

@@ -27,12 +27,15 @@ function handleFiles(files) {
         img.src = window.URL.createObjectURL(files[0]); 
         img.height = 60; 
 
-        var username = document.getElementById("username").value
+        var username = document.getElementById("email").value
         var studentUsername = document.getElementById("studentUsername").value
         var schoolID = document.getElementById("schoolID").value
 
-         
-        getContent(img.src).then(fileText => console.log(createUpload(username, studentUsername, schoolID, fileText)))
+        console.log(loginUser())
+        getContent(img.src).then(fileText => {
+            console.log(fileText)
+            return createTranscript(fileText, username, studentUsername, schoolID)
+        })
 
 
 

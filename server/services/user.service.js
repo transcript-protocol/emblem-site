@@ -88,25 +88,28 @@ const guidance1 ={
 
 //get transcript
 userService.getTranscript = (pdfContent) => {
+    pdfContent = keccak256(pdfContent) // hashes pdf content for query
     return transcriptRepository.getTranscript(pdfContent)
 }
 
 //create transcript
 userService.storeTranscript = (transcriptInfo) => {
     console.log('CLIENT INPUT: ', transcriptInfo)
-    //get hashValue from transcriptInfo and hash it, then resave it here
-    console.log('OLD hashVALUE HERE: ', transcriptInfo.hashValue)
-    transcriptInfo.hashValue = keccak256(transcriptInfo.hashValue)
-    console.log('NEW hashVALUE HERE: ', transcriptInfo.hashValue)
+    //get pdfContent from transcriptInfo and hash it, then resave it here
+    console.log('OLD CONTENT HERE:', transcriptInfo.pdfContent)
+    transcriptInfo.pdfContent = keccak256(transcriptInfo.pdfContent) //hashes pdf content for query
+    console.log('NEW pdfContent HERE: ', transcriptInfo.pdfContent)
     return transcriptRepository.storeTranscript(transcriptInfo)
 }
 
 //update transcript
 userService.updateTranscript = (transcriptInfo) => {
+    ranscriptInfo.pdfContent = keccak256(transcriptInfo.pdfContent) //hashes pdf content for query
     return transcriptRepository.updateTranscript(transcriptInfo)
 }    
 //delete transcript
 userService.deleteTranscript = (pdfContent) => {
+    pdfContent = keccak256(pdfContent) //hashes pdf content for query
     return transcriptRepository.deleteTranscript(pdfContent)
 }
 

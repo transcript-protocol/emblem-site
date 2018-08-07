@@ -1,9 +1,9 @@
-html {}
+/* html {} */
 
 body {
     font-family: Roboto, sans-serif;
     color: #0f3c4b;
-    background-color: #fff;
+    background-image: url("./images/gradient.png");
     padding: 5rem 1.25rem;
     /* 80 20 */
 }
@@ -13,7 +13,7 @@ body {
     margin-right: 15px;
     padding-top: 50px;
     padding-bottom: 75px;
-    background: url("lightGradient.png")
+    background: url("./images/gradient.png");
 }
 
 
@@ -98,7 +98,7 @@ h3 {
     margin: 0 auto;
 }
 
-#signup {
+#upload {
     padding: 0px 25px 25px;
     background: #fff;
     box-shadow: 0px 0px 0px 5px rgba( 255, 255, 255, 0.4), 0px 4px 20px rgba( 0, 0, 0, 0.33);
@@ -109,35 +109,35 @@ h3 {
     position: static;
 }
 
-#signup .header {
+#upload .header {
     margin-bottom: 20px;
 }
 
-#signup .header h3 {
+#upload .header h3 {
     color: #333333;
     font-size: 24px;
     font-weight: bold;
     margin-bottom: 5px;
 }
 
-#signup .header p {
+#upload .header p {
     color: #8f8f8f;
     font-size: 14px;
     font-weight: 300;
 }
 
-#signup .sep {
+#upload .sep {
     height: 1px;
     background: #e8e8e8;
     width: 406px;
     margin: 0px -25px;
 }
 
-#signup .inputs {
+#upload .inputs {
     margin-top: 25px;
 }
 
-#signup .inputs label {
+#upload .inputs label {
     color: #8f8f8f;
     font-size: 12px;
     font-weight: 300;
@@ -154,7 +154,7 @@ input:-moz-placeholder {
     color: #b5b5b5;
 }
 
-#signup .inputs input[type=username],
+#upload .inputs input[type=email],
 input[type=password],
 input[type=studentUsername],
 input[type=schoolID] {
@@ -171,20 +171,20 @@ input[type=schoolID] {
     clear: both;
 }
 
-#signup .inputs input[type=email]:focus,
+#upload .inputs input[type=email]:focus,
 input[type=password]:focus {
     background: #fff;
     box-shadow: 0px 0px 0px 3px #fff38e, inset 0px 2px 3px rgba( 0, 0, 0, 0.2), 0px 5px 5px rgba( 0, 0, 0, 0.15);
     outline: none;
 }
 
-#signup .inputs label.terms {
+#upload .inputs label.terms {
     float: left;
     font-size: 14px;
     font-style: italic;
 }
 
-#signup .inputs #submit {
+#upload .inputs #submit {
     width: 100%;
     margin-top: 20px;
     padding: 15px 0;
@@ -209,11 +209,25 @@ input[type=password]:focus {
     clear: both;
 }
 
-#signup .inputs #submit:hover {
+#upload .inputs #submit:hover {
     background: -moz-linear-gradient( top, #a4b0cb 0%, #b9c5dd);
     background: -webkit-gradient( linear, left top, left bottom, from(#a4b0cb), to(#b9c5dd));
 }
 
+
+.redirect {
+    color: black;
+    text-decoration: none;
+    outline-color: #fff;
+    background-color: #EEEEEE;
+    color: #333333;
+    padding: 2px 6px 2px 6px;
+    border-top: 1px solid #CCCCCC;
+    border-right: 1px solid #333333;
+    border-bottom: 1px solid #333333;
+    border-left: 1px solid #CCCCCC;
+    border-radius: 5px;
+}
 
 /* footer */
 

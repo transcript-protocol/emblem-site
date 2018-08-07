@@ -5,15 +5,18 @@ Property of EmblemEDU
 Extracts info from form
 */
 
-class Upload {
-    constructor(username, studentUsername, schoolID, pdfText) {
+class Transcript {
+    constructor(pdfText, username, studentUsername, schoolID) {
+        this.pdfText = pdfText
         this.username = username
         this.studentUsername = studentUsername
         this.schoolID = schoolID
-        this.pdfText = pdfText
+        
     }
 }
 
-function createUpload(username, studentUsername, schoolID, pdfText) {
-    return new Upload(username, studentUsername, schoolID, pdfText)
+function createTranscript(pdfText, username, studentUsername, schoolID) {
+    upload = new Transcript(pdfText, username, studentUsername, schoolID)
+    console.log(upload)
+    return upload
 }

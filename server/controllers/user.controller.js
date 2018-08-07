@@ -315,7 +315,7 @@ userController.deleteTranscript = (req, res) => {
 // userController.getTranscriptByUsername = (req, res) => {
 //     userService.getTranscriptByUsername(req.body)
 //     .then( (transcript) => {
-//         res.end(transcript.hashValue)
+//         res.end(transcript.pdfCo ntent)
 //     })
 // }
 
