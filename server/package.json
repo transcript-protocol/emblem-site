@@ -2,12 +2,12 @@
   "name": "transcript-server",
   "version": "1.0.0",
   "description": "Server for transcript protocol app",
-  "main": "src/server.js",
+  "main": "server.js",
   "repository": "git@github.com:transcript-protocol/transcript-server.git",
   "author": "Will Galebach <willbach@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "start": "node src/server.js",
+    "start": "node ./server.js",
     "test": "./scripts/test.sh"
   },
   "dependencies": {

@@ -15,7 +15,7 @@ const bodyParser = require('body-parser')
 // takes weird json file in request and makes it into req.body
 //`app.use` says use this library, 
 app.use(bodyParser.urlencoded({ extended: true }), bodyParser.json())
-app.use(express.static(path.join(__dirname, '../site')))
+app.use(express.static(path.join(__dirname, '../app')))
 
 //controllers
 const userController = require('./controllers/user.controller')
