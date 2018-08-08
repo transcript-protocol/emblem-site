@@ -9,7 +9,7 @@ Takes elements from form and creates a user object to be passed to the back end
 //messy general fetch code starts here///
 ////////////////////////////////////////
 
-const baseUrl = 'http://localhost:4000/' //change this to base url of remote server once it's set up
+const urlBase = 'http://localhost:4000/' //change this to base url of remote server once it's set up
 
 
 function generalGet(_url) { //need to modify to check for authorization
@@ -197,19 +197,19 @@ function submitUser () {
     username = String(user.username)
     // console.log(username)
     var studentUrl
-    const userUrl = baseUrl + 'user'
+    const userUrl = urlBase + 'user'
     console.log(userUrl)
     generalPost(userUrl, user)
     if (accountType == 'guidance'){
         guidance = scrapeCounselor()
         // console.log(guidance)
-        const guidanceUrl = baseUrl + 'guidance'
+        const guidanceUrl = urlBase + 'guidance'
         console.log(guidanceUrl)
         generalPost(guidanceUrl, guidance)
     } else if (accountType == 'student'){
         student = scrapeStudent()
         // console.log(student)
-        studentUrl = baseUrl + 'student'
+        studentUrl = urlBase + 'student'
         console.log(studentUrl)
         generalPost(studentUrl, student)
     }
@@ -232,13 +232,13 @@ function submitUser () {
 function loginUser () {
   const username = document.getElementById("email").value
   const password = document.getElementById("password").value
-  const userUrl = baseUrl + 'user/' + username
+  const userUrl = urlBase + 'user/' + username
   console.log(userUrl)
   const user = {
     'username': username,
     'password': password,
   }
-  loginUrl = baseUrl + 'user/login'
+  loginUrl = urlBase + 'user/login'
   generalPost(loginUrl, user)
   
   
@@ -278,6 +278,85 @@ function createTranscript(pdfText, username, studentUsername, schoolID) {
   console.log(upload)
   console.log("why meeeeee")
   return upload
+}
+
+window.URL = window.URL || window.webkitURL;
+
+var fileElem = document.getElementById("fileElem"),
+    fileList = document.getElementById("fileList");
+
+
+function handleFiles(files) { //general make object of files
+    console.log('FILES ', files);
+    if (!files.length) {
+        fileList.innerHTML = "<h1>Choose Transcript</h1>"
+    } else {
+
+      document.getElementById("fileElem").innerHTML = "Success!"
+
+      var img = document.createElement("img"); 
+      img.src = window.URL.createObjectURL(files[0]); 
+      img.height = 60; 
+
+      var username = document.getElementById("email").value
+      var studentUsername = document.getElementById("studentUsername").value
+      var schoolID = document.getElementById("schoolID").value
+
+      getContent(img.src).then(fileText => {
+        return fileText
+      })
+
+    }
+}
+
+function handleFilesStore(files) {
+  handleFiles(files)
+  .then( fileText => {
+    console.log(fileText)
+    return createTranscript(fileText, username, studentUsername, schoolID)
+  })
+  .then(transcript => {
+    storeUrl = urlBase + 'transcript'
+    generalPost(storeUrl, transcript)
+  })
+}
+
+function handleFilesVerify(files) {
+  handleFiles(files)
+  .then ( fileText => {
+    //add code to get transcript here
+  })
+}
+
+/**
+ * Returns the data
+ */
+function getContent(pdfUrl) {
+    return PDFJS.getDocument(pdfUrl)
+        .then(pdf => pdf.getPage(1)) // pages start at 1
+        .then(page => page.getTextContent())
+        .then(joinTextData)
+        .then(data => {
+            var pdfText = String(data)
+            console.log("Pdf text INSIDE of getContent: " + pdfText)
+            return pdfText
+        })
+        .catch(function(err) {
+            console.log('Get Text Error: ', err)
+        })
+}
+
+
+/*
+Parses the data from the shitshow of a datastructure
+*/
+function joinTextData(textData) {
+    // data structure of textData is {items: [
+    // 	{
+    // 		str: *TEXT*
+    // 	}
+    // ]}
+    return textData.items.map(item => item.str).join(' ')
 }
 
 /////////////////////////////////////////////

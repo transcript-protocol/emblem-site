@@ -14,7 +14,6 @@ var fileElem = document.getElementById("fileElem"),
     fileList = document.getElementById("fileList");
 
 
-
 function handleFiles(files) {
     console.log('FILES ', files);
     if (!files.length) {
@@ -31,13 +30,14 @@ function handleFiles(files) {
         var studentUsername = document.getElementById("studentUsername").value
         var schoolID = document.getElementById("schoolID").value
 
-        console.log(loginUser())
         getContent(img.src).then(fileText => {
             console.log(fileText)
             return createTranscript(fileText, username, studentUsername, schoolID)
         })
-
-
+        .then(transcript => {
+            storeUrl = urlBase + 'transcript'
+            generalPost(storeUrl, transcript)
+        })
 
     }
 }

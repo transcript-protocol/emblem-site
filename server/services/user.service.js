@@ -30,6 +30,8 @@ userService.getUser = id => {
     return userRepository.getUser(id).then( user => new UserDTO(user) )
 }
 
+
+
 //create user
 userService.storeUser = userInfo => {
     if(userInfo.accountType === 'guidance') {
@@ -62,6 +64,11 @@ userService.loginUser = userInfo => {
     .then( id => {
         return authUtils.generateToken(id)
     })
+}
+
+//THIS IS JUST FOR TESTING PURPOSES TO SHOW DATABASE ENTRIES BY USERNAME! NOT TO BE DEPLOYED
+userService.findUser = username => {
+    return userRepository.findUser(username)
 }
 
 ////////////////////////////////////////////////////

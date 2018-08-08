@@ -12,6 +12,7 @@ const userController = {}
 // CODE FOR USER ACCOUNT INFO STARTS HERE //////////
 ///////////////////////////////////////////////////
 
+
 userController.getUser = (req, res) => {
     authUtils.verifyToken(req)
     .then( data => {
@@ -98,6 +99,29 @@ userController.loginUser = (req, res) => {
     .catch( err => {
         console.log('[POST] LOGIN USER ERROR: ', err)
         res.status(401).end('USER NOT AUTHORIZED')
+    })
+}
+
+//THIS IS JUST FOR TESTING PURPOSES TO SHOW DATABASE ENTRIES BY USERNAME! NOT TO BE DEPLOYED
+userController.findUser = (req, res) => {
+    var user = userService.findUser(req.params.username)
+    .then((user) => {
+        if (!user) {
+            res.status(404).end('user  does not exist')
+        } else {
+            // console.log(user)
+            // user = res.end(JSON.stringify(user))
+            // console.log('WTF is going on?', user)
+            res.status(200).end("got user!!")
+        }
+    })
+    .catch( err => { // 'catch' the error that was thrown by an earlier file (service or repository), and tell the browser the error type and message
+        console.log(err)
+        if (err === 'id format is not valid') {
+            res.status(400).json(err) //send error code and error text (which is defined by `throw new Error`). 400 = invalid request
+        } else {
+            res.status(503).json(err) //send error code and error text. 503 = service not available
+        }
     })
 }
 

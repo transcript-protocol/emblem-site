@@ -33,6 +33,8 @@ userRepository.updateUser = userInfo => {
     })
 }
 
+
+
 userRepository.loginUser = userInfo => {
     username = userInfo.username
     password = userInfo.password
@@ -50,6 +52,12 @@ userRepository.loginUser = userInfo => {
 
 userRepository.deleteUser = id => {
     return User.findById(id).remove()
+}
+
+//THIS IS JUST FOR TESTING PURPOSES TO SHOW DATABASE ENTRIES BY USERNAME! NOT TO BE DEPLOYED
+userRepository.findUser = username => {
+    username = username
+    return User.findOne({ username })
 }
 
 module.exports = userRepository

@@ -18,7 +18,6 @@
 
     <div class="container-fluid">
         <div class="row">
-
             <div class="col-xs-6">
                 <div class="container" id="containerForm">
 
@@ -44,7 +43,7 @@
 
                             <input type="schoolID" id="schoolID" placeholder="School ID" />
 
-                            <button id="submit" onclick="loginUser()" href="#">Verify this information</button>
+                            <!-- <button id="submit" onclick="loginUser()" href="#">Verify this information</button> -->
 
                             <script src="app.js"></script>
 
@@ -59,15 +58,14 @@
                     <div id="fileList">
                         <h1>and Upload Transcript Here</h1>
                     </div>
-                    <input type="file" class="inputfile" id="fileElem" multiple accept="application/pdf" onchange="handleFiles(this.files);">
+                    <input type="file" class="inputfile" id="fileElem" multiple accept="application/pdf" onchange="handleFilesStore(this.files);">
                     <label for="fileElem">Choose a file</label>
 
-                    <script src="readTranscript.js">
+                    <script src="app.js">
                     </script>
                 </div>
             </div>
         </div>
-    </div>
     </div>
 
     <div class="footer">
@@ -75,6 +73,7 @@
         </p>
     </div>
 
+    <a href="./index.html">GO HOME, BUDDY</a>
 
 </body>
 

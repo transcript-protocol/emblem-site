@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+
+<html lang="en" class="no-js">
+
+<head>
+    <meta charset="utf-8">
+    <title>Drag and Drop File Uploading</title>
+    <script src="./build/pdf.js"></script>
+    <!-- <script src="../node_modules/js-sha256/build/sha256.min.js"></script> -->
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- <link rel="stylesheet" href="style.css" -->
+    <link rel="stylesheet" href="upload.css" />
+</head>
+
+<body>
+    <div class="col-xs-6">
+      <div class="container" role="main" id="containerDrop">
+          <div id="fileList">
+            <h1>and Upload Transcript Here</h1>
+          </div>
+                <input type="file" class="inputfile" id="fileElem" multiple accept="application/pdf" onchange="handleFiles(this.files);">
+                <label for="fileElem">Choose a file</label>
+
+                <script src="app.js">
+                </script>
+      </div>
+    </div>
+    <br></br>
+    <div class="footer">
+        <p> Property of EmblemEDU copyright 2018.
+        </p>
+    </div>
+
+    <a href="./index.html">GO HOME, BUDDY</a>
+
+</body>
+
+</html>

@@ -50,6 +50,10 @@ transcriptRepository.updateTranscript = (transcriptInfo) => { //update whole obj
 
 transcriptRepository.deleteTranscript = (pdfContent) => { //delete object by pdf contents. potentially never use this feature.
     return Transcript.findOne({ pdfContent: pdfContent }).remove()
+    .then(status => {
+        console.log(status)
+        return status
+    })
 }
 
 // transcriptRepository.getTranscriptByUsername = (username) => {

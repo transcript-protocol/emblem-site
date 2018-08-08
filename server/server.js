@@ -30,6 +30,7 @@ app.get('/user', userController.getUser) //gets user account data (uname, pass, 
 app.post('/user', userController.storeUser) // sets user account data (uname, pass, account type)
 app.put('/user', userController.updateUser) //updates user account data (uname, pass, account type) by username
 app.delete('/user', userController.deleteUser) //deletes user account (uname, pass, account type) by username
+app.get('/user/find/:username', userController.findUser)
 
 //authentication
 app.post('/user/login', userController.loginUser)
