@@ -2,44 +2,38 @@ const ethUtil = require('ethereumjs-util')
 
 const transcriptHashingUtil = {}
 
+transcriptHashingUtil.hashTranscript = (transcript) => {
+    const hash = Buffer.from(transcript)
+    return ethUtil.hashPersonalMessage(hash).toString('hex')
+}
 
-
-
-
-
-
-
-
-
-
-// OLD CODE
-
-//derive private key from signature and check it against address
-creditProtocolUtil.determineSigner = (transaction, signature) => {
-    const sigAddress = creditProtocolUtil.signatureToAddress(transaction, signature)
-    if(transaction.creditorAddress === sigAddress) {
-        return 'creditor'
-    } else if(transaction.debtorAddress === sigAddress) {
-        return 'debtor'
-    } else {
-        return null;
+transcriptHashingUtil.signTranscriptHash = (transcriptHashHex, privateKey) => {
+    if(privateKey.slice(0, 2) === '0x') {
+        privateKey = privateKey.slice(2)
     }
+
+    const msgHash = Buffer.from(transcriptHashHex, 'hex')
+    const privateKeyBuffer = Buffer.from(privateKey, 'hex')
+    return ethUtil.ecsign(msgHash, privateKeyBuffer)
 }
 
-creditProtocolUtil.verifySignature = (transaction, signature) => {
-    const sigAddress = creditProtocolUtil.signatureToAddress(transaction, signature)
-    return transaction.creditorAddress === sigAddress || transaction.debtorAddress === sigAddress
+transcriptHashingUtil.verifySignature = (transcriptHashHex, signature, address) => {
+    if(addresss.slice(0, 2) === '0x') {
+        addresss = addresss.slice(2)
+    }
+
+    const sigAddress = transcriptHashingUtil.signatureToAddress(transcriptHashHex, signature)
+    return sigAddress === address
 }
 
-creditProtocolUtil.signatureToAddress = (transaction, signature) => {
-    const { v, r, s } = creditProtocolUtil.decomposeSignature(signature)
-    let hash = Buffer.from(transaction.hash)
-    const msgHash = ethUtil.hashPersonalMessage(hash)
+transcriptHashingUtil.signatureToAddress = (transcriptHashHex, signature) => {
+    const { v, r, s } = transcriptHashingUtil.decomposeSignature(signature)
+    const msgHash = Buffer.from(transcriptHashHex, 'hex')
     const addressBuffer = ethUtil.pubToAddress( ethUtil.ecrecover(msgHash, v, r, s) )
     return hexAddress = addressBuffer.toString('hex')
 }
 
-creditProtocolUtil.decomposeSignature = (signature) => {
+transcriptHashingUtil.decomposeSignature = (signature) => {
     //strip leading '0x', r is first 64 bytes, s is next 64 bytes, v is last 2 bytes
     const signatureBuffer = hexToBuffer(signature)
     const r = signatureBuffer.slice(0, 32)
@@ -56,7 +50,7 @@ function hexToBuffer(value) {
     return Buffer.from(value, 'hex')
 } 
 
-module.exports = creditProtocolUtil
+module.exports = transcriptHashingUtil
 
 
 // exports.ecrecover = function (msgHash, v, r, s) {
