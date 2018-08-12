@@ -15,24 +15,12 @@ const keccak256 = require('js-sha3').keccak256;
 const authUtils = require('../utils/auth.util')
 const UserDTO = require('../dto/user.dto')
 
-
-//just in case we need it later
-const schoolRepository = require('../repositories/school.repository')
-
 const userService = {}
 
-/////////////////////////////////////////////////////
-// CODE FOR USER ACCOUNT INFO STARTS HERE //////////
-///////////////////////////////////////////////////
-
-//get user
 userService.getUser = id => {
     return userRepository.getUser(id).then( user => new UserDTO(user) )
 }
 
-
-
-//create user
 userService.storeUser = userInfo => {
     if(userInfo.accountType === 'guidance') {
         if(userInfo.code === null) {
@@ -48,17 +36,14 @@ userService.storeUser = userInfo => {
     }
 }
 
-//update user
 userService.updateUser = userInfo => {
     return userRepository.updateUser(userInfo)
 }
 
-//delete user
 userService.deleteUser = id => {
     return userRepository.deleteUser(id)
 }
 
-//login user
 userService.loginUser = userInfo => {
     return userRepository.loginUser(userInfo)
     .then( id => {

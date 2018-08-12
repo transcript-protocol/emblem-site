@@ -14,8 +14,9 @@ describe('HTTP Server', function() {
             accountType: 'student',
             firstName: 'MARY',
             lastName: 'JANE',
-            userDOB: '10022001',
-            schoolID: '1325145'
+            dateOfBirth: '10022001',
+            schoolID: '1325145',
+            acceptedTerms: true
         }
 
         const user2 = {
@@ -24,8 +25,9 @@ describe('HTTP Server', function() {
             accountType: 'student',
             firstName: 'JANE',
             lastName: 'DOE',
-            userDOB: '10022001',
-            schoolID: '1325145'
+            dateOfBirth: '10022001',
+            schoolID: '1325145',
+            acceptedTerms: true
         }
 
         const login1 = {
@@ -83,7 +85,7 @@ describe('HTTP Server', function() {
     //         firstName: 'Scott',
     //         middleName: 'ST',
     //         lastName: 'Clarke', 
-    //         userDOB: '10041952',
+    //         dateOfBirth: '10041952',
     //         schoolID: '12345'
     //     }
 
@@ -92,7 +94,7 @@ describe('HTTP Server', function() {
     //         firstName: 'Russel',
     //         middleName: 'ST',
     //         lastName: 'Coleman', 
-    //         userDOB: '10041932',
+    //         dateOfBirth: '10041932',
     //         schoolID: '12345'
     //     }
 
@@ -126,7 +128,7 @@ describe('HTTP Server', function() {
     //         firstName: 'Scott',
     //         middleName: 'ST',
     //         lastName: 'Clarke', 
-    //         userDOB: '10041952',
+    //         dateOfBirth: '10041952',
     //         schoolID: '12345',
     //         previousSchoolIDs: ['12456', '12567']
     //     }
@@ -136,7 +138,7 @@ describe('HTTP Server', function() {
     //         firstName: 'Russel',
     //         middleName: 'ST',
     //         lastName: 'Coleman', 
-    //         userDOB: '10041932',
+    //         dateOfBirth: '10041932',
     //         schoolID: '12678',
     //         previousSchoolIDs: ['12456', '12567', '12345']
     //     }
@@ -238,7 +240,7 @@ describe('HTTP Server', function() {
             firstName: 'Scott',
             middleName: 'ST',
             lastName: 'Clarke', 
-            userDOB: '10041952',
+            dateOfBirth: '10041952',
             schoolID: '22345',
             previousSchoolIDs: ['12456', '12567']
         }

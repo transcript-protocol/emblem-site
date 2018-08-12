@@ -8,15 +8,10 @@
             <form id="upload">
 
               <div class="header">
-
                 <h3>Fill this out</h3>
-
-                <p>{{ msg }}</p>
-
               </div>
 
               <div class="sep"></div>
-
               <div class="inputs">
 
                 <input type="email" v-model="email" placeholder="Username/Email" autofocus />
@@ -32,7 +27,6 @@
                 <!-- <button id="submit" onclick="loginUser()" href="#">Verify this information</button> -->
 
               </div>
-
             </form>
           </div>
         </div>
@@ -50,12 +44,7 @@
       </div>
     </div>
 
-    <div class="footer">
-      <p> Property of EmblemEDU copyright 2018.
-      </p>
-    </div>
-
-    <a href="/">GO HOME, BUDDY</a>
+    <router-link to="/">GO HOME, BUDDY</router-link>
   </div>
 </template>
 
@@ -66,7 +55,6 @@ export default {
   name: 'Upload',
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App',
       username: 'Bob',
       email: '',
       password: '',
@@ -76,11 +64,6 @@ export default {
     }
   },
   methods: {
-    createUser: function () {
-      console.log('INFORMATION TO CREATE USER: ', {
-        username: this.data.username
-      })
-    }
   }
 }
 </script>

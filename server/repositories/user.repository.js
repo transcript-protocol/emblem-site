@@ -33,8 +33,6 @@ userRepository.updateUser = userInfo => {
     })
 }
 
-
-
 userRepository.loginUser = userInfo => {
     username = userInfo.username
     password = userInfo.password

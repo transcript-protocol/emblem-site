@@ -1,18 +1,19 @@
 <template>
   <div>
     <h3>This routes you places! It is now the homepage which will get pretty later</h3>
-    <a href="/signup" class="redirect">CLICK HERE TO GET CRACKALACKIN</a>
+    <router-link to="/signup" class="redirect">Create Account</router-link>
     <br/>
-    <a href="/upload" class="redirect">UPLOAD THAT ISH </a>
     <br/>
-    <a href="/login" class="redirect">LOGIN MY DUDE</a>
+    <router-link to="/upload" class="redirect">Upload Transcript</router-link>
     <br/>
-    <a href="/verify" class="redirect">VERIFY SOME SCRIPTS</a>
-
-    <div class="footer">
-      <p> Property of EmblemEDU copyright 2018.
-      </p>
-    </div>
+    <br/>
+    <router-link to="/login" class="redirect">Login</router-link>
+    <br/>
+    <br/>
+    <router-link to="/login" class="redirect">My Profile</router-link>
+    <br/>
+    <br/>
+    <router-link to="/verify" class="redirect">Verify Transcript</router-link>
   </div>
 </template>
 

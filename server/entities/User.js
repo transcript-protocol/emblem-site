@@ -32,21 +32,21 @@ const UserSchema = new Schema({
         required: true
     },
 
-    firstName: { //suggest school email for GC and not school email for student
+    firstName: {
         type: String,
         required: true
     },
 
-    middleName: { //suggest school email for GC and not school email for student
+    middleName: {
         type: String
     },
 
-    lastName: { //suggest school email for GC and not school email for student
+    lastName: {
         type: String,
         required: true
     },
 
-    userDOB: { //suggest school email for GC and not school email for student
+    dateOfBirth: {
         type: String,
         required: true
     },
@@ -58,6 +58,11 @@ const UserSchema = new Schema({
 
     previousSchoolIDs: {
         type: Array
+    },
+    
+    acceptedTerms: {
+        type: Boolean,
+        required: true
     },
     
     sequence: Number,
