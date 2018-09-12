@@ -1,11 +1,8 @@
-const SALT_WORK_FACTOR = 10;
-const bcrypt = require('bcrypt-nodejs');
+const database = process.env.EMBLEM_DATABASE
 
-//should be connection for everything vvvvv
 const mongoose = require('mongoose')
 mongoose.Promise = require('bluebird')
-mongoose.connect('mongodb://localhost/transcript')
-// mongoose.connect('mongodb://localhost/transcript')
+mongoose.connect(`mongodb://localhost/${database}`)
 
 const db = mongoose.connection
 db.on('error', console.error.bind(console, 'connection error:'))
@@ -17,30 +14,54 @@ db.once('open', function() {
 const Schema = mongoose.Schema
 const TranscriptSchema = new Schema({
   
-  pdfContent: { 
-    type: String,
-    required: true,
-    index: { unique: true }
-  },
-
-  username: { //matches an email in users, used to see who issued the transcript hash
+  firstName: {
     type: String,
     required: true
   },
-  
-  studentUsername: { //username of the student the transcript belongs to
+
+  lastName: {
+    type: String,
+    required: true
+  },
+
+  middleName: {
+    type: String,
+  },
+
+  dateOfBirth: {
+    type: String,
+    required: true
+  },
+
+  lastYearInSchool: {
     type: String,
     required: true
   },
 
   schoolID: {
-    type: String, 
+    type: String,
     required: true
   },
 
-  sequence: Number,
-  updatedAt: { type: Date, default: Date.now }
-})
+  hash: {
+    type: String,
+    required: true,
+    index: { unique: true }
+  },
 
+  signature: {
+    type: String,
+    required: true
+  },
+
+  writtenToBlockchain: {
+    type: Boolean,
+    default: false
+  },
+
+  sequence: Number,
+  updatedAt: { type: Date, default: Date.now },
+  createdAt: { type: Date, default: Date.now }
+})
 
 module.exports = mongoose.model('Transcript', TranscriptSchema)

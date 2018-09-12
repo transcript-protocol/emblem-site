@@ -1,41 +1,39 @@
 <template>
-  <div class="container">
-    <form id="signup" @submit.prevent="createUser">
-      <div class="header">
-        <h3>Sign Up</h3>
+  <div class="container centered-column">
+    <div class="col-lg-7 col-md-8 col-sm-10 col-xs-12">
+      <form id="signup-form" class="centered-column" @submit.prevent="createUser">
+        <h2>Create Account</h2>
         <p>Join and get ready to spend your time not thinking about transcripts. Go on vacation or something</p>
-      </div>
-      <div class="sep"></div>
-      <div class="inputs">
+        <div class="sep"></div>
+        <div class="inputs">
 
-        <input type="radio" id="typeStudent" value="student" v-model="userData.accountType" checked>Student
-        <input type="radio" id="typeCounselor" value="guidance" v-model="userData.accountType">Counselor <br> <br>
+          <input type="radio" id="typeStudent" value="student" v-model="userData.accountType" checked>Student
+          <input type="radio" id="typeCounselor" value="guidance" v-model="userData.accountType">Counselor <br> <br>
 
-                    <!-- makes space between choices and rest of the form^^^^^^ -->
+          <input type="First" v-model="userData.firstName" placeholder="First Name" autofocus required/>
 
-        <input type="First" v-model="userData.firstName" placeholder="First Name" autofocus required/>
+          <input type="Middle" v-model="userData.middleName" placeholder="Middle Name" />
 
-        <input type="Middle" v-model="userData.middleName" placeholder="Middle Name" />
+          <input type="Last" v-model="userData.lastName" placeholder="Last Name" required/>
 
-        <input type="Last" v-model="userData.lastName" placeholder="Last Name" required/>
+          <input type="DOB" v-model="userData.userDOB" placeholder="Date of Birth MM/DD/YYYY" autofocus required maxlength="10"/>
 
-        <input type="DOB" v-model="userData.userDOB" placeholder="Date of Birth MM/DD/YYYY" autofocus required maxlength="10"/>
+          <input type="school" v-model="userData.schoolID" placeholder="School" required/>
 
-        <input type="school" v-model="userData.schoolID" placeholder="School" required/>
+          <input type="email" v-model="userData.email" placeholder="E-mail" autofocus required/>
 
-        <input type="email" v-model="userData.email" placeholder="E-mail" autofocus required/>
+          <input type="password" v-model="userData.password" placeholder="Password" required/>
 
-        <input type="password" v-model="userData.password" placeholder="Password" required/>
+          <input type="password" v-model="userData.confirmPassword" placeholder="Confirm Password" required/>
 
-        <input type="password" v-model="userData.confirmPassword" placeholder="Confirm Password" required/>
+          <div class="checkboxy">
+              <input v-model="userData.acceptTerms" name="checky" value="1" type="checkbox" required/><label class="terms">I accept the terms of use</label>
+          </div>
 
-        <div class="checkboxy">
-            <input v-model="userData.acceptTerms" name="checky" value="1" type="checkbox" required/><label class="terms">I accept the terms of use</label>
+          <button type="submit">SIGN UP NOW</button>
         </div>
-
-        <button type="submit">SIGN UP NOW</button>
-      </div>
-    </form>
+      </form>
+    </div>
   </div>
 </template>
 

@@ -1,15 +1,17 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 
+import loader from './modules/loader'
 import user from './modules/user'
-
-// follow the examples at https://vuex.vuejs.org/guide/
+import transcript from './modules/transcript'
 
 Vue.use(Vuex)
 
 const store = new Vuex.Store({
   modules: {
-    user
+    loader,
+    user,
+    transcript
   },
   state: {
 

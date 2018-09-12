@@ -62,5 +62,4 @@ schoolController.deleteSchool = (req, res) => {
       })
 }
 
-
 module.exports = schoolController

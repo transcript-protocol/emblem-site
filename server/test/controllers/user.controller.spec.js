@@ -1,6 +1,6 @@
-const userController = require('../src/controllers/user.controller.js')
+const userController = require('../../controllers/user.controller.js')
 
-describe('User Controller', function() {
+xdescribe('User Controller', function() {
   describe('#*funtionName*', function() {
     it('should *do something*', function() {
 

@@ -1,69 +1,59 @@
 <template>
-  <div>
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-xs-6">
-          <div class="container" id="containerForm">
-
-            <form id="upload">
-
-              <div class="header">
-                <h3>Fill this out</h3>
-              </div>
-
-              <div class="sep"></div>
-              <div class="inputs">
-
-                <input type="email" v-model="email" placeholder="Username/Email" autofocus />
-
-                <input type="password" v-model="password" placeholder="Password" />
-
-                <input type="password" v-model="confirmPassword" placeholder="Confirm Password" />
-
-                <input type="studentUsername" v-model="studentUsername" placeholder="Student Username" />
-
-                <input type="schoolID" v-model="schoolID" placeholder="School ID" />
-
-                <!-- <button id="submit" onclick="loginUser()" href="#">Verify this information</button> -->
-
-              </div>
-            </form>
-          </div>
+  <div class="container centered-column">
+    <div class="col-lg-5 col-md-6 col-sm-7 col-xs-12">
+      <form id="upload-form" enctype="multipart/form-data" class="centered-column" @submit.prevent="uploadTranscripts">
+        <h2>Upload Transcripts</h2>
+        <div class="dropbox centered-column-center">
+          <p v-if="!transcriptData.length">
+              Drag your file(s) here to begin<br> or click to browse
+          </p>
+          <input type="file" class="input-file" multiple :disabled="isSaving" :name="uploadFieldName" accept="application/pdf" v-on:change="handleFile($event.target.files); fileCount=$event.target.files.length">
+          <ul class="transcripts">
+            <li v-for="attachment in attachments" :key="attachment.name">
+              {{ attachment.name }}
+            </li>
+          </ul>
         </div>
-
-        <div class="col-xs-6">
-          <div class="container" role="main" id="containerDrop">
-            <div id="fileList">
-              <h1>and Upload Transcript Here</h1>
-            </div>
-            <input type="file" class="inputfile" id="fileElem" multiple accept="application/pdf" onchange="handleFilesStore(this.files);">
-            <label for="fileElem">Choose a file</label>
-
-          </div>
-        </div>
-      </div>
+        <button type="submit">UPLOAD</button>
+      </form>
     </div>
-
-    <router-link to="/">GO HOME, BUDDY</router-link>
   </div>
 </template>
 
 <script>
-// import the user module to call user actions
 
 export default {
   name: 'Upload',
+
   data () {
     return {
-      username: 'Bob',
-      email: '',
-      password: '',
-      confirmPassword: '',
       studentUsername: '',
-      schoolID: ''
+      fileCount: 0,
+      isSaving: false,
+      uploadFieldName: 'transcripts',
+      transcriptData: new FormData(),
+      attachments: []
     }
   },
+
   methods: {
+    handleFile (files) {
+      for (let i = files.length - 1; i >= 0; i--) {
+        this.attachments.push({file: files[i], name: files[i].name})
+      }
+    },
+    prepareTranscripts () {
+      this.attachments.forEach(transcript => this.transcriptData.append(this.uploadFieldName, transcript.file))
+    },
+    uploadTranscripts () {
+      this.prepareTranscripts()
+      console.log(this.transcriptData.getAll('transcripts'))
+      this.$store.dispatch('transcript/uploadTranscripts', this.transcriptData)
+        .then(success => {
+          this.transcriptData = new FormData()
+          this.attachments = []
+        })
+    }
   }
 }
 </script>

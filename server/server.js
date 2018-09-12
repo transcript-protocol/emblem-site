@@ -1,46 +1,44 @@
-// defines all your routes, is called server.js beacuse it's the top level file
-// server.js is kind of a misnomer because all of this is the server
-// is called server.js because ti's the top level file
-
 const PORT = 4000
 const express = require('express')
 const app = express()
 
-
-// const moment = require('moment')
-const path = require('path')
 const bodyParser = require('body-parser')
+const path = require('path')
 
-//this says if you receive json automatically convert to javascript object
-// takes weird json file in request and makes it into req.body
-//`app.use` says use this library, 
+const multer = require('multer')
+const fileFilter = function (req, file, cb) {
+    // accept image only
+    if (!file.originalname.match(/\.(pdf)$/)) {
+        return cb(new Error('Only pdf files are allowed!'), false)
+    }
+    cb(null, true)
+}
+const upload = multer({ fileFilter })
+
 app.use(bodyParser.urlencoded({ extended: true }), bodyParser.json())
 app.use(express.static(path.join(__dirname, '../vue-app/dist')))
 
 //controllers
 const userController = require('./controllers/user.controller')
 const schoolController = require('./controllers/school.controller')
+const transcriptController = require('./controllers/transcript.controller')
 
 //routes
 
-app.get('/helloworld', (req, res) => res.end('hello world')) //hello world
-
 //generic accounts
-app.get('/user', userController.getUser) //gets user account data (uname, pass, account type) from username
-app.post('/user', userController.storeUser) // sets user account data (uname, pass, account type)
-app.put('/user', userController.updateUser) //updates user account data (uname, pass, account type) by username
-app.delete('/user', userController.deleteUser) //deletes user account (uname, pass, account type) by username
-app.get('/user/find/:username', userController.findUser)
+app.get('/user', userController.getUser)
+app.post('/user', userController.storeUser)
+app.put('/user', userController.updateUser)
+app.delete('/user', userController.deleteUser)
 
 //authentication
 app.post('/user/login', userController.loginUser)
 
 //transcript
-app.get('/transcript/:pdfContent', userController.getTranscript) //gets transcript data (pdfContent, username, studentUsername) from pdfContent
-app.post('/transcript', userController.storeTranscript) // sets transcript data (pdfContent, username, studentUsername, date&time updated)
-app.put('/transcript', userController.updateTranscript) //updates transcript data (pdfContent, username, studentUsername) by pdfContent
-app.delete('/transcript/:pdfContent', userController.deleteTranscript) //deletes transcript data (pdfContent, username, studentUsername) by pdfContent
-// app.get('/transcript/query/username/:username', userController.getTranscriptByUsername) //gets transcripts by username
+app.post('/transcript/search', transcriptController.searchTranscripts)
+app.post('/transcript', upload.array('transcripts', 12), transcriptController.storeTranscripts)
+app.get('/transcript', transcriptController.getTranscript) // students get their transcript, guidance get all transcripts for the school
+app.delete('/transcript/:hash', transcriptController.deleteTranscript)
 
 //school
 app.get('/school/:schoolID', schoolController.getSchool) //gets school data (name and address) from schoolID

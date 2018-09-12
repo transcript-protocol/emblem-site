@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="container centered-column">
     <h1>PROFILE</h1>
     <h4>Username: {{ userInfo.username }}</h4>
     <h4>First Name: {{ userInfo.firstName }}</h4>
@@ -8,6 +8,8 @@
     <h4>Date of Birth: {{ userInfo.dateOfBirth }}</h4>
     <h4>School ID: {{ userInfo.schoolID }}</h4>
     <h4>Previous School IDs: {{ userInfo.previousSchoolIDs }}</h4>
+
+    <router-link to="/upload" class="redirect">Upload Transcript</router-link>
   </div>
 </template>
 

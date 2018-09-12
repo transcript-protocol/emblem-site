@@ -14,12 +14,18 @@ transcriptHashingUtil.signTranscriptHash = (transcriptHashHex, privateKey) => {
 
     const msgHash = Buffer.from(transcriptHashHex, 'hex')
     const privateKeyBuffer = Buffer.from(privateKey, 'hex')
-    return ethUtil.ecsign(msgHash, privateKeyBuffer)
+    const { r, s, v } = ethUtil.ecsign(msgHash, privateKeyBuffer)
+
+    return bufferToHex(
+        Buffer.concat(
+            [ r, s, Buffer.from([ v ]) ]
+        )
+    )
 }
 
 transcriptHashingUtil.verifySignature = (transcriptHashHex, signature, address) => {
-    if(addresss.slice(0, 2) === '0x') {
-        addresss = addresss.slice(2)
+    if(address.slice(0, 2) === '0x') {
+        address = address.slice(2)
     }
 
     const sigAddress = transcriptHashingUtil.signatureToAddress(transcriptHashHex, signature)
@@ -27,13 +33,13 @@ transcriptHashingUtil.verifySignature = (transcriptHashHex, signature, address) 
 }
 
 transcriptHashingUtil.signatureToAddress = (transcriptHashHex, signature) => {
-    const { v, r, s } = transcriptHashingUtil.decomposeSignature(signature)
+    const { v, r, s } = decomposeSignature(signature)
     const msgHash = Buffer.from(transcriptHashHex, 'hex')
     const addressBuffer = ethUtil.pubToAddress( ethUtil.ecrecover(msgHash, v, r, s) )
     return hexAddress = addressBuffer.toString('hex')
 }
 
-transcriptHashingUtil.decomposeSignature = (signature) => {
+function decomposeSignature(signature) {
     //strip leading '0x', r is first 64 bytes, s is next 64 bytes, v is last 2 bytes
     const signatureBuffer = hexToBuffer(signature)
     const r = signatureBuffer.slice(0, 32)
@@ -48,10 +54,13 @@ function hexToBuffer(value) {
     }
   
     return Buffer.from(value, 'hex')
-} 
+}
+
+function bufferToHex(buffer) {
+    return buffer.toString('hex')
+}
 
 module.exports = transcriptHashingUtil
-
 
 // exports.ecrecover = function (msgHash, v, r, s) {
 //     var signature = Buffer.concat([exports.setLength(r, 32), exports.setLength(s, 32)], 64)

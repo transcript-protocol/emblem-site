@@ -1,0 +1,80 @@
+2018-09-09T09:42:58.499-0500 I CONTROL  [initandlisten] MongoDB starting : pid=68401 port=27017 dbpath=/data/db 64-bit host=Williams-MacBook-Pro-2.local
+2018-09-09T09:42:58.500-0500 I CONTROL  [initandlisten] db version v4.0.0
+2018-09-09T09:42:58.500-0500 I CONTROL  [initandlisten] git version: 3b07af3d4f471ae89e8186d33bbb1d5259597d51
+2018-09-09T09:42:58.500-0500 I CONTROL  [initandlisten] allocator: system
+2018-09-09T09:42:58.501-0500 I CONTROL  [initandlisten] modules: none
+2018-09-09T09:42:58.501-0500 I CONTROL  [initandlisten] build environment:
+2018-09-09T09:42:58.501-0500 I CONTROL  [initandlisten]     distarch: x86_64
+2018-09-09T09:42:58.501-0500 I CONTROL  [initandlisten]     target_arch: x86_64
+2018-09-09T09:42:58.502-0500 I CONTROL  [initandlisten] options: { processManagement: { fork: true }, systemLog: { destination: "file", path: "../mongod-logs/mongod.log" } }
+2018-09-09T09:42:58.502-0500 I STORAGE  [initandlisten] Detected data files in /data/db created by the 'wiredTiger' storage engine, so setting the active storage engine to 'wiredTiger'.
+2018-09-09T09:42:58.503-0500 I STORAGE  [initandlisten] wiredtiger_open config: create,cache_size=7680M,session_max=20000,eviction=(threads_min=4,threads_max=4),config_base=false,statistics=(fast),log=(enabled=true,archive=true,path=journal,compressor=snappy),file_manager=(close_idle_time=100000),statistics_log=(wait=0),verbose=(recovery_progress),
+2018-09-09T09:42:59.231-0500 I STORAGE  [initandlisten] WiredTiger message [1536504179:231397][68401:0x7fffa821b380], txn-recover: Main recovery loop: starting at 305/896
+2018-09-09T09:42:59.341-0500 I STORAGE  [initandlisten] WiredTiger message [1536504179:341440][68401:0x7fffa821b380], txn-recover: Recovering log 305 through 306
+2018-09-09T09:42:59.411-0500 I STORAGE  [initandlisten] WiredTiger message [1536504179:411581][68401:0x7fffa821b380], txn-recover: Recovering log 306 through 306
+2018-09-09T09:42:59.464-0500 I STORAGE  [initandlisten] WiredTiger message [1536504179:464210][68401:0x7fffa821b380], txn-recover: Set global recovery timestamp: 0
+2018-09-09T09:42:59.587-0500 I RECOVERY [initandlisten] WiredTiger recoveryTimestamp. Ts: Timestamp(0, 0)
+2018-09-09T09:42:59.741-0500 I CONTROL  [initandlisten] 
+2018-09-09T09:42:59.742-0500 I CONTROL  [initandlisten] ** WARNING: Access control is not enabled for the database.
+2018-09-09T09:42:59.743-0500 I CONTROL  [initandlisten] **          Read and write access to data and configuration is unrestricted.
+2018-09-09T09:42:59.743-0500 I CONTROL  [initandlisten] 
+2018-09-09T09:42:59.744-0500 I CONTROL  [initandlisten] ** WARNING: This server is bound to localhost.
+2018-09-09T09:42:59.745-0500 I CONTROL  [initandlisten] **          Remote systems will be unable to connect to this server. 
+2018-09-09T09:42:59.745-0500 I CONTROL  [initandlisten] **          Start the server with --bind_ip <address> to specify which IP 
+2018-09-09T09:42:59.746-0500 I CONTROL  [initandlisten] **          addresses it should serve responses from, or with --bind_ip_all to
+2018-09-09T09:42:59.746-0500 I CONTROL  [initandlisten] **          bind to all interfaces. If this behavior is desired, start the
+2018-09-09T09:42:59.747-0500 I CONTROL  [initandlisten] **          server with --bind_ip 127.0.0.1 to disable this warning.
+2018-09-09T09:42:59.748-0500 I CONTROL  [initandlisten] 
+2018-09-09T09:43:00.014-0500 I FTDC     [initandlisten] Initializing full-time diagnostic data capture with directory '/data/db/diagnostic.data'
+2018-09-09T09:43:00.017-0500 I NETWORK  [initandlisten] waiting for connections on port 27017
+2018-09-09T09:43:06.000-0500 I NETWORK  [listener] connection accepted from 127.0.0.1:57074 #1 (1 connection now open)
+2018-09-09T09:43:06.000-0500 I NETWORK  [listener] connection accepted from 127.0.0.1:57075 #2 (2 connections now open)
+2018-09-09T09:43:06.001-0500 I NETWORK  [listener] connection accepted from 127.0.0.1:57076 #3 (3 connections now open)
+2018-09-09T09:43:06.004-0500 I NETWORK  [conn1] received client metadata from 127.0.0.1:57074 conn1: { driver: { name: "nodejs", version: "3.1.1" }, os: { type: "Darwin", name: "darwin", architecture: "x64", version: "17.7.0" }, platform: "Node.js v10.0.0, LE, mongodb-core: 3.1.0" }
+2018-09-09T09:43:06.004-0500 I NETWORK  [conn2] received client metadata from 127.0.0.1:57075 conn2: { driver: { name: "nodejs", version: "3.1.1" }, os: { type: "Darwin", name: "darwin", architecture: "x64", version: "17.7.0" }, platform: "Node.js v10.0.0, LE, mongodb-core: 3.1.0" }
+2018-09-09T09:43:06.004-0500 I NETWORK  [conn3] received client metadata from 127.0.0.1:57076 conn3: { driver: { name: "nodejs", version: "3.1.1" }, os: { type: "Darwin", name: "darwin", architecture: "x64", version: "17.7.0" }, platform: "Node.js v10.0.0, LE, mongodb-core: 3.1.0" }
+2018-09-09T09:43:06.039-0500 I NETWORK  [listener] connection accepted from 127.0.0.1:57080 #4 (4 connections now open)
+2018-09-09T09:43:06.047-0500 I NETWORK  [listener] connection accepted from 127.0.0.1:57084 #5 (5 connections now open)
+2018-09-09T09:43:06.052-0500 I STORAGE  [conn1] createCollection: emblem-test.users with generated UUID: d66dbaf0-c228-4d72-9708-4021ec171d87
+2018-09-09T09:43:06.165-0500 I INDEX    [conn1] build index on: emblem-test.users properties: { v: 2, unique: true, key: { username: 1 }, name: "username_1", ns: "emblem-test.users", background: true }
+2018-09-09T09:43:06.171-0500 I STORAGE  [conn5] createCollection: emblem-test.schools with generated UUID: dd38dfc7-402f-484d-9621-44e6ae5bcf9a
+2018-09-09T09:43:06.272-0500 I INDEX    [conn5] build index on: emblem-test.schools properties: { v: 2, unique: true, key: { schoolID: 1 }, name: "schoolID_1", ns: "emblem-test.schools", background: true }
+2018-09-09T09:43:06.275-0500 I STORAGE  [conn4] createCollection: emblem-test.transcripts with generated UUID: 1b200753-42bd-4bbc-843c-c2458444b241
+2018-09-09T09:43:06.375-0500 I INDEX    [conn4] build index on: emblem-test.transcripts properties: { v: 2, unique: true, key: { hash: 1 }, name: "hash_1", ns: "emblem-test.transcripts", background: true }
+2018-09-09T09:43:06.377-0500 I INDEX    [conn4] build index done.  scanned 0 total records. 0 secs
+2018-09-09T09:43:06.377-0500 I INDEX    [conn1] build index done.  scanned 0 total records. 0 secs
+2018-09-09T09:43:06.377-0500 I INDEX    [conn5] build index done.  scanned 0 total records. 0 secs
+2018-09-09T09:43:06.377-0500 I COMMAND  [conn3] command emblem-test.transcripts command: find { find: "transcripts", filter: { firstName: "MARY", lastName: "JANE", lastYearInSchool: null, schoolID: "1325145", dateOfBirth: "10022001" }, projection: {}, limit: 1, singleBatch: true, batchSize: 1, returnKey: false, showRecordId: false, lsid: { id: UUID("1351d578-a0c1-4ae9-a3fc-7feb37c8ab2a") }, $db: "emblem-test" } planSummary: COLLSCAN keysExamined:0 docsExamined:0 cursorExhausted:1 numYields:0 nreturned:0 reslen:127 locks:{ Global: { acquireCount: { r: 1 } }, Database: { acquireCount: { r: 1 }, acquireWaitCount: { r: 1 }, timeAcquiringMicros: { r: 316140 } }, Collection: { acquireCount: { r: 1 } } } protocol:op_query 316ms
+2018-09-09T09:43:06.379-0500 I COMMAND  [conn4] command emblem-test.$cmd command: createIndexes { createIndexes: "transcripts", indexes: [ { name: "hash_1", key: { hash: 1 }, unique: true, background: true } ], lsid: { id: UUID("5ba46969-7647-4c8b-a05e-6996292b731b") }, $db: "emblem-test" } numYields:0 reslen:129 locks:{ Global: { acquireCount: { r: 1, w: 1 } }, Database: { acquireCount: { w: 1, W: 2 }, acquireWaitCount: { W: 2 }, timeAcquiringMicros: { W: 228602 } }, Collection: { acquireCount: { w: 1 } } } protocol:op_query 331ms
+2018-09-09T09:43:06.380-0500 I COMMAND  [conn1] command emblem-test.$cmd command: createIndexes { createIndexes: "users", indexes: [ { name: "username_1", key: { username: 1 }, unique: true, background: true } ], lsid: { id: UUID("c61b8c08-bc17-474c-a48d-17d1183b787b") }, $db: "emblem-test" } numYields:0 reslen:129 locks:{ Global: { acquireCount: { r: 1, w: 1 } }, Database: { acquireCount: { w: 1, W: 2 }, acquireWaitCount: { w: 1, W: 1 }, timeAcquiringMicros: { w: 205420, W: 906 } }, Collection: { acquireCount: { w: 1 } } } protocol:op_query 332ms
+2018-09-09T09:43:06.380-0500 I COMMAND  [conn5] command emblem-test.$cmd command: createIndexes { createIndexes: "schools", indexes: [ { name: "schoolID_1", key: { schoolID: 1 }, unique: true, background: true } ], lsid: { id: UUID("88d08c8a-84df-4d4a-a889-9a3c31c6c563") }, $db: "emblem-test" } numYields:0 reslen:129 locks:{ Global: { acquireCount: { r: 1, w: 1 } }, Database: { acquireCount: { w: 1, W: 2 }, acquireWaitCount: { w: 1, W: 2 }, timeAcquiringMicros: { w: 102240, W: 124149 } }, Collection: { acquireCount: { w: 1 } } } protocol:op_query 332ms
+2018-09-09T09:43:12.726-0500 I NETWORK  [listener] connection accepted from 127.0.0.1:57114 #6 (6 connections now open)
+2018-09-09T09:43:12.792-0500 I NETWORK  [conn4] end connection 127.0.0.1:57080 (4 connections now open)
+2018-09-09T09:43:12.792-0500 I NETWORK  [conn6] end connection 127.0.0.1:57114 (5 connections now open)
+2018-09-09T09:43:12.792-0500 I NETWORK  [conn3] end connection 127.0.0.1:57076 (3 connections now open)
+2018-09-09T09:43:12.792-0500 I NETWORK  [conn1] end connection 127.0.0.1:57074 (2 connections now open)
+2018-09-09T09:43:12.792-0500 I NETWORK  [conn2] end connection 127.0.0.1:57075 (1 connection now open)
+2018-09-09T09:43:12.792-0500 I NETWORK  [conn5] end connection 127.0.0.1:57084 (0 connections now open)
+2018-09-09T09:43:13.016-0500 I NETWORK  [listener] connection accepted from 127.0.0.1:57119 #7 (1 connection now open)
+2018-09-09T09:43:13.017-0500 I NETWORK  [conn7] received client metadata from 127.0.0.1:57119 conn7: { application: { name: "MongoDB Shell" }, driver: { name: "MongoDB Internal Client", version: "4.0.0" }, os: { type: "Darwin", name: "Mac OS X", architecture: "x86_64", version: "17.7.0" } }
+2018-09-09T09:43:13.019-0500 I COMMAND  [conn7] dropDatabase emblem-test - starting
+2018-09-09T09:43:13.019-0500 I COMMAND  [conn7] dropDatabase emblem-test - dropping 0 collections
+2018-09-09T09:43:13.123-0500 I COMMAND  [conn7] dropDatabase emblem-test - finished
+2018-09-09T09:43:13.123-0500 I COMMAND  [conn7] command emblem-test appName: "MongoDB Shell" command: dropDatabase { dropDatabase: 1.0, $db: "emblem-test" } numYields:0 reslen:63 locks:{ Global: { acquireCount: { r: 2, w: 1, W: 1 } }, Database: { acquireCount: { W: 1 } } } protocol:op_msg 104ms
+2018-09-09T09:43:13.126-0500 I NETWORK  [conn7] end connection 127.0.0.1:57119 (0 connections now open)
+2018-09-09T09:43:13.341-0500 I NETWORK  [listener] connection accepted from 127.0.0.1:57120 #8 (1 connection now open)
+2018-09-09T09:43:13.341-0500 I NETWORK  [conn8] received client metadata from 127.0.0.1:57120 conn8: { application: { name: "MongoDB Shell" }, driver: { name: "MongoDB Internal Client", version: "4.0.0" }, os: { type: "Darwin", name: "Mac OS X", architecture: "x86_64", version: "17.7.0" } }
+2018-09-09T09:43:13.343-0500 I COMMAND  [conn8] terminating, shutdown command received { shutdown: 1.0, $db: "admin" }
+2018-09-09T09:43:13.343-0500 I NETWORK  [conn8] shutdown: going to close listening sockets...
+2018-09-09T09:43:13.343-0500 I NETWORK  [conn8] removing socket file: /tmp/mongodb-27017.sock
+2018-09-09T09:43:13.344-0500 I CONTROL  [conn8] Shutting down free monitoring
+2018-09-09T09:43:13.344-0500 I FTDC     [conn8] Shutting down full-time diagnostic data capture
+2018-09-09T09:43:13.346-0500 I STORAGE  [conn8] WiredTigerKVEngine shutting down
+2018-09-09T09:43:13.524-0500 I STORAGE  [conn8] Downgrading WiredTiger datafiles.
+2018-09-09T09:43:13.755-0500 I STORAGE  [conn8] WiredTiger message [1536504193:755529][68401:0x7000093b9000], txn-recover: Main recovery loop: starting at 306/36480
+2018-09-09T09:43:13.849-0500 I STORAGE  [conn8] WiredTiger message [1536504193:849397][68401:0x7000093b9000], txn-recover: Recovering log 306 through 307
+2018-09-09T09:43:13.916-0500 I STORAGE  [conn8] WiredTiger message [1536504193:915989][68401:0x7000093b9000], txn-recover: Recovering log 307 through 307
+2018-09-09T09:43:13.968-0500 I STORAGE  [conn8] WiredTiger message [1536504193:968657][68401:0x7000093b9000], txn-recover: Set global recovery timestamp: 0
+2018-09-09T09:43:14.749-0500 I STORAGE  [conn8] shutdown: removing fs lock...
+2018-09-09T09:43:14.750-0500 I CONTROL  [conn8] now exiting
+2018-09-09T09:43:14.750-0500 I CONTROL  [conn8] shutting down with code:0

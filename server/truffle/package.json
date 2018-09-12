@@ -1,0 +1,17 @@
+{
+  "name": "emblem-contracts",
+  "version": "1.0.0",
+  "description": "contracts for emblemEDU",
+  "main": "truffle.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "truffle test",
+    "migrate": "truffle migrate --network testrpc",
+    "ganache": "ganache-cli --blocktime 1 -e 100000000000000000000 -m gravity top burden flip student usage spell purchase hundred improve check genre > /dev/null 2>&1 & echo $!",
+    "compile": "truffle compile"
+  },
+  "author": "",
+  "license": "ISC"
+}

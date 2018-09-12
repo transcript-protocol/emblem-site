@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="container centered-column">
     <h3>This routes you places! It is now the homepage which will get pretty later</h3>
     <router-link to="/signup" class="redirect">Create Account</router-link>
     <br/>

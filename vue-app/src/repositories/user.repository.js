@@ -1,36 +1,14 @@
+import { makeRequest, toJSON, auth, setAuthToken } from './lib/helpers'
+
 export default class UserRepository {
-  constructor () {
-    this.token = ''
-    this.auth = false
-  }
-
-  makeRequest (route, options) {
-    return fetch(route, options).then(this.handleErrors)
-  }
-
-  handleErrors (response) {
-    if (!response.ok) {
-      throw Error(`${response.status} ${response.statusText}`)
-    }
-    return response
-  }
-
-  toJSON (response) {
-    return response.json()
-  }
-
-  setToken (token) {
-    this.token = token
-  }
-
   getUser () {
     const options = {
       headers: {
-        'x-access-token': this.token,
+        'x-access-token': auth.token,
         'Content-Type': 'application/json'
       }
     }
-    return this.makeRequest('/user', options).then(this.toJSON)
+    return makeRequest('/user', options).then(toJSON)
   }
 
   createUser (userData) {
@@ -41,30 +19,30 @@ export default class UserRepository {
       },
       body: JSON.stringify(userData)
     }
-    return this.makeRequest('/user', options).then(this.toJSON)
+    return makeRequest('/user', options).then(toJSON).then(setAuthToken)
   }
 
   updateUser (userData) {
     const options = {
       method: 'PUT',
       headers: {
-        'x-access-token': this.token,
+        'x-access-token': auth.token,
         'Content-Type': 'application/json'
       },
       body: JSON.stringify(userData)
     }
-    return this.makeRequest('/user', options)
+    return makeRequest('/user', options)
   }
 
   deleteUser () {
     const options = {
       method: 'DELETE',
       headers: {
-        'x-access-token': this.token,
+        'x-access-token': auth.token,
         'Content-Type': 'application/json'
       }
     }
-    return this.makeRequest('/user', options)
+    return makeRequest('/user', options)
   }
 
   loginUser (loginData) {
@@ -75,6 +53,6 @@ export default class UserRepository {
       },
       body: JSON.stringify(loginData)
     }
-    return this.makeRequest('/user/login', options).then(this.toJSON)
+    return makeRequest('/user/login', options).then(toJSON).then(setAuthToken)
   }
 }

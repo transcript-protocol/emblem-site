@@ -1,9 +1,8 @@
+const database = process.env.EMBLEM_DATABASE
 
-//should be connection for everything vvvvv
 const mongoose = require('mongoose')
 mongoose.Promise = require('bluebird')
-mongoose.connect('mongodb://localhost/transcript')
-// mongoose.connect('mongodb://localhost/transcript')
+mongoose.connect(`mongodb://localhost/${database}`)
 
 const db = mongoose.connection
 db.on('error', console.error.bind(console, 'connection error:'))
@@ -54,7 +53,8 @@ const SchoolSchema = new Schema({
     },
 
     sequence: Number,
-    updatedAt: { type: Date, default: Date.now }
+    updatedAt: { type: Date, default: Date.now },
+    createdAt: { type: Date, default: Date.now }
 })
 
 module.exports = mongoose.model('School', SchoolSchema)
